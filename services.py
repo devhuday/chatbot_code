@@ -237,7 +237,7 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        image = image_Message(number, get_media_id("welcome", "image"),"")
+        image = image_Message(number, get_media_id("welcome", "images"),"")
         body = bot.welcome["message"]
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)

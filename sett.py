@@ -20,7 +20,7 @@ stickers = {
     "gato_cansado": 1021308728970759
 }
 
-Images = {
+images = {
     "welcome": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730402109855"
 }
 
