@@ -237,12 +237,12 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        imagex = image_Message(number, "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406321958")
+        imagex = image_Message(number, "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406512788","hl")
         body = bot.welcome["message"]
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        #enviar_Mensaje_whatsapp(imagex)
+        enviar_Mensaje_whatsapp(imagex)
         list.append(replyReaction)
         list.append(replyButtonData)
     elif "servicios" in text:
