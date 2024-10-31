@@ -153,8 +153,7 @@ def image_Message(number, url, caption):
             "to": number,
             "type": "image",
             "image": {
-                "link": url,
-                "caption": caption,
+                "link": url
             }
         }
     )
@@ -237,13 +236,13 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        imagex = image_Message(number, get_media_id("welcome", "image"))
+        imagex1 = image_Message(number, get_media_id("welcome", "image"))
         body = bot.welcome["message"]
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        imagex=document_Message(number,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8Dm4zHvpZPr2zd8-ZCHKCtSOAmVRUdGuDQ&s","asdasd","ewf")
-        enviar_Mensaje_whatsapp(imagex)
+        imagex2=document_Message(number,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8Dm4zHvpZPr2zd8-ZCHKCtSOAmVRUdGuDQ&s","asdasd","ewf")
+        enviar_Mensaje_whatsapp(imagex1)
         list.append(replyReaction)
         list.append(replyButtonData)
     elif "servicios" in text:
