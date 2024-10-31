@@ -154,7 +154,8 @@ def image_Message(number, url, caption):
             "type": "image",
             "image": {
                 "link": url,
-                "caption": "caption"
+                "caption": caption,
+                
             }
         }
     )
@@ -233,14 +234,14 @@ def administrar_chatbot(text,number, messageId, name):
 
     markRead = markRead_Message(messageId)
     list.append(markRead)
-    footer = "Equipo Greengoll"
+    footer = "Equipo Greengol"
     time.sleep(2)
 
     if "hola" in text:
-        imagex = image_Message(number, "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406512788","hl")
-        body = bot.welcome["message"]
+        imagex = image_Message(number, get_media_id("welcome", "image"), bot.welcome["message"])
+        body = bot.welcome["question"]
         options = bot.welcome["option"]
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        replyButtonData = buttonReply_Message(number, options, body, "", "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         enviar_Mensaje_whatsapp(imagex)
         list.append(replyReaction)
