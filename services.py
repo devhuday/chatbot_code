@@ -179,7 +179,7 @@ def get_media_id(media_name , media_type):
     if media_type == "sticker":
         media_id = sett.stickers.get(media_name, None)
     elif media_type == "image":
-        media_id = sett.images.get(media_name, None)
+        media_id = sett.images[media_name]
     #elif media_type == "video":
     #    media_id = sett.videos.get(media_name, None)
     #elif media_type == "audio":
@@ -242,6 +242,7 @@ def administrar_chatbot(text,number, messageId, name):
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
+        document_Message(number,get_media_id("welcome", "image"),"asdasd","")
         enviar_Mensaje_whatsapp(image)
         list.append(replyReaction)
         list.append(replyButtonData)

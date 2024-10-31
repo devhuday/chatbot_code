@@ -21,7 +21,7 @@ stickers = {
 }
 
 images = {
-    "welcome": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730402109855"
+    "welcome": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8Dm4zHvpZPr2zd8-ZCHKCtSOAmVRUdGuDQ&s"
 }
 
 document_url = "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201300kwh.pdf?v=1730156408245"
