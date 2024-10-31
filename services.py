@@ -153,7 +153,8 @@ def image_Message(number, url, caption):
             "to": number,
             "type": "image",
             "image": {
-                "link": url
+                "link": url,
+                "caption": "caption"
             }
         }
     )
@@ -236,13 +237,12 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        imagex1 = image_Message(number, get_media_id("welcome", "image"))
+        imagex = image_Message(number, "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406321958")
         body = bot.welcome["message"]
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        imagex2=document_Message(number,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8Dm4zHvpZPr2zd8-ZCHKCtSOAmVRUdGuDQ&s","asdasd","ewf")
-        enviar_Mensaje_whatsapp(imagex1)
+        #enviar_Mensaje_whatsapp(imagex)
         list.append(replyReaction)
         list.append(replyButtonData)
     elif "servicios" in text:
