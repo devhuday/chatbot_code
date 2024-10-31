@@ -242,7 +242,7 @@ def administrar_chatbot(text,number, messageId, name):
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        imagex=document_Message(number,get_media_id("welcome", "image"),"asdasd","")
+        imagex=document_Message(number,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8Dm4zHvpZPr2zd8-ZCHKCtSOAmVRUdGuDQ&s","asdasd","ewf")
         enviar_Mensaje_whatsapp(imagex)
         list.append(replyReaction)
         list.append(replyButtonData)
