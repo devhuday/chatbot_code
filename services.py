@@ -2,7 +2,7 @@ import requests
 import sett
 import json
 import time
-import mesagesbot as bot
+import textbot as bot
 def obtener_Mensaje_whatsapp(message):
     if 'type' not in message :
         text = 'mensaje no reconocido'
@@ -222,8 +222,8 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        body = bot.welcome
-        options = ["✅ servicios", "📅 agendar cita"]
+        body = bot.welcome["message"]
+        options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
