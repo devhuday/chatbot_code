@@ -246,7 +246,8 @@ def administrar_chatbot(text,number, messageId, name):
         enviar_Mensaje_whatsapp(imagex)
         list.append(replyReaction)
         list.append(replyButtonData)
-    elif "servicios" in text:
+        
+    elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
         options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
 
