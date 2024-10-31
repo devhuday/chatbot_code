@@ -20,7 +20,7 @@ def administrar_chatbot(text,number, messageId, name):
         options = bot.welcome["option"]
         
         #enviamos el logo de primeras
-        imagex = image_Message(number, get_media_id("welcome", "image"), bot.welcome["message"])
+        imagex = image_Message(number, get_media_id("welcome", "image"), bot.welcome["question"])
         enviar_Mensaje_whatsapp(imagex)
         
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
