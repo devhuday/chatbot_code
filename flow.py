@@ -14,7 +14,7 @@ def administrar_chatbot(text,number, messageId, name):
     enviar_Mensaje_whatsapp(markRead)
     time.sleep(1)
 
-    if "hola" or "ola" or "buenas" in text:
+    if "hola" in text:
         
         body = bot.welcome["message"]
         options = bot.welcome["option"]
@@ -29,12 +29,9 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replyButtonData)
         
     elif "Cotización" in text:
-        body = bot.Cotización["question"]
-        options = bot.Cotización["option"]
-        
+        body = bot.Cotizacion["question"]
+        options = bot.Cotizacion["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
-        replyReaction = replyReaction_Message(number, messageId, "🫡")
-        list.append(replyReaction)
         list.append(replyButtonData)
       
     elif "informacion" in text:
