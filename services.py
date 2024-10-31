@@ -233,7 +233,7 @@ def administrar_chatbot(text,number, messageId, name):
 
     markRead = markRead_Message(messageId)
     list.append(markRead)
-    footer = "Equipo Greengol"
+    footer = "Equipo Greengoll"
     time.sleep(2)
 
     if "hola" in text:
