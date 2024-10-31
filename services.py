@@ -242,7 +242,7 @@ def administrar_chatbot(text,number, messageId, name):
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        list.append(image)
+        enviar_Mensaje_whatsapp(image)
         list.append(replyReaction)
         list.append(replyButtonData)
     elif "servicios" in text:
