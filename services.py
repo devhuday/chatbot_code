@@ -145,6 +145,21 @@ def document_Message(number, url, caption, filename):
     )
     return data
 
+def image_Message(number, url, caption):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "image",
+            "image": {
+                "link": url,
+                "caption": caption,
+            }
+        }
+    )
+    return data
+
 def sticker_Message(number, sticker_id):
     data = json.dumps(
         {
@@ -163,8 +178,8 @@ def get_media_id(media_name , media_type):
     media_id = ""
     if media_type == "sticker":
         media_id = sett.stickers.get(media_name, None)
-    #elif media_type == "image":
-    #    media_id = sett.images.get(media_name, None)
+    elif media_type == "image":
+        media_id = sett.images.get(media_name, None)
     #elif media_type == "video":
     #    media_id = sett.videos.get(media_name, None)
     #elif media_type == "audio":
@@ -222,10 +237,12 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
+        image = image_Message(number, get_media_id("welcome", "image"),"")
         body = bot.welcome["message"]
         options = bot.welcome["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
+        list.append(image)
         list.append(replyReaction)
         list.append(replyButtonData)
     elif "servicios" in text:
