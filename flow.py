@@ -9,7 +9,7 @@ def administrar_chatbot(text,number, messageId, name):
     #mensaje que envio el usuario
     text = text.lower()
     list = []
-    print("mensaje del usuario: ",text)
+    print("mensaje del usuario:",text)
 
     #primero marcamos como leido el mensaje del ususario
     markRead = markRead_Message(messageId)
@@ -57,8 +57,8 @@ def administrar_chatbot(text,number, messageId, name):
     elif "menor a 1000kwh" in text:
         body = bot.Residencial_coti_menor["message"]
         options = bot.Residencial_coti_menor["option"]
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
-        list.append(replyButtonData)
+        replyButtonD = buttonReply_Message(number, options, body, footer, "sed3",messageId)
+        list.append(replyButtonD)
         
     elif "entre 1000 y 2000kwh" in text:
         body = bot.Residencial_coti_entre["message"]
@@ -69,7 +69,7 @@ def administrar_chatbot(text,number, messageId, name):
     elif "mayor a 2000kwh" in text:
         body = bot.Residencial_coti_mayor["message"]
         replytext = text_Message(number,body)
-        list.append(replyButtonData)
+        list.append(replytext)
       
     elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"

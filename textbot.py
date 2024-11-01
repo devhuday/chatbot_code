@@ -22,12 +22,13 @@ Residencial_cotizar = {
 
 Residencial_coti_menor = {
     "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
-    "option": ["Ahorro hasta 360 kWh", "Ahorro hasta 700 kWh", "Ahorro hasta 1000 kWh"]
+    "option": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
     } 
 
 Residencial_coti_entre = {
     "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
-    "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"]
+    "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"],
+    "option2": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
     } 
 
 Residencial_coti_mayor = {
