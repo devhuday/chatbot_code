@@ -70,6 +70,15 @@ def administrar_chatbot(text,number, messageId, name):
         body = bot.Residencial_coti_mayor["message"]
         replytext = text_Message(number,body)
         list.append(replytext)
+        
+    elif "ahorro hasta" in text:
+        body = bot.Residencial_coti_pdf["message"]
+        replytext = text_Message(number,body)
+        list.append(replytext)
+        time.sleep(2)
+
+        document = document_Message(number, sett.documents["cotizacion_360"], "Listo 👍🏻", "Cotización.pdf")
+        enviar_Mensaje_whatsapp(document)
       
     elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"

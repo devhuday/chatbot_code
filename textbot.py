@@ -35,4 +35,8 @@ Residencial_coti_mayor = {
     "message": "Para poder cotizarte necesito la siguiente informacion numero de contacto, copia o foto de la  factura de energía que aparezca el Nic y enviarlo al correo ingenieria@greenglo.com.co o al numero de whatsapp https://wa.me/573017426368.",
     } 
 
+Residencial_coti_pdf = {
+    "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación.*"
+    } 
+
  
