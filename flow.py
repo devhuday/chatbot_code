@@ -77,7 +77,7 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replytext)
         time.sleep(2)
 
-        document = document_Message(number, sett.documents["cotizacion_360"], "Listo 👍🏻", "Cotización.pdf")
+        document = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], "Listo 👍🏻", "Cotización.pdf")
         enviar_Mensaje_whatsapp(document)
       
     elif "informacion" in text:
