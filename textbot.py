@@ -15,7 +15,8 @@ Residencial = {
     }
 
 Residencial_cotizar = {
-    "message": "Listo, ahora revisa tu última factura de energía como la que se muestra en la imagen, observa tu consumo y responde a la pregunta. *¿En que rango de consumo estas actualmete?*",
+    "message": "Listo, ahora revisa tu última factura de energía como la que se muestra en la imagen, observa tu consumo y responde a la pregunta. ",
+    "question": "*¿En que rango de consumo estas actualmete?*",
     "option": ["Menor a 1000kwh", "Entre 1000 y 2000Kwh", "Mayor a 2000Kwh"]
     }   
 

@@ -44,10 +44,10 @@ def administrar_chatbot(text,number, messageId, name):
     elif "si, deseo cotizar" in text:
         
         #enviamos el logo de primeras
-        imagex = image_Message(number, get_media_id("consumo", "image"), "")
+        imagex = image_Message(number, get_media_id("consumo", "image"), bot.welcome["message"])
         enviar_Mensaje_whatsapp(imagex)
-        
-        body = bot.Residencial_cotizar["message"]
+        time.sleep(1)
+        body = bot.Residencial_cotizar["question"]
         options = bot.Residencial_cotizar["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)

@@ -22,7 +22,7 @@ stickers = {
 
 images = {
     "welcome": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406512788",
-    "consumo": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406512788"
+    "consumo": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Imagen%20de%20WhatsApp%202024-10-31%20a%20las%2022.38.03_9ae83d26.jpg?v=1730432649562"
 }
 
 document_url = "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201300kwh.pdf?v=1730156408245"
