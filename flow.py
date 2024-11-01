@@ -1,4 +1,6 @@
 from services import *
+import textbot as bot
+import sett
 #Declaramos algunas variables globales
 footer = "Equipo Greengol"
 
@@ -10,12 +12,11 @@ def administrar_chatbot(text,number, messageId, name):
     print("mensaje del usuario: ",text)
 
     #primero marcamos como leido el mensaje del ususario
-    markRead = markRead_Message(messageId)
-    enviar_Mensaje_whatsapp(markRead)
+    #markRead = markRead_Message(messageId)
+    #enviar_Mensaje_whatsapp(markRead)
     time.sleep(1)
 
     if "hola" in text:
-        
         body = bot.welcome["message"]
         options = bot.welcome["option"]
         
@@ -28,13 +29,13 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replyReaction)
         list.append(replyButtonData)
         
-    elif "Cotización " in text:
-        body = bot.Cotizacion["question"]
-        options = bot.Cotizacion["option"]
+    elif "cotizacion" in text:
+        body = bot.cotizacion["message"]
+        options = bot.cotizacion["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
       
-    elif "Informacion ❓" in text:
+    elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
         options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
 
