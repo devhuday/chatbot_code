@@ -4,7 +4,7 @@ welcome = {
     "option": ["Información ❓", "Cotización ✍️", "Agendar cita 🗓️"]
     }
 
-Cotización = {
+Cotizacion = {
     "message": "Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
     "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
     }
