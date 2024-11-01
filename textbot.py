@@ -1,5 +1,5 @@
 welcome = {
-    "message": "¡Hola! 😊 ¡Bienvenido a Greengol  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
+    "message": "¡Hola! 😊 ¡Bienvenido a Greengol  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidaar el medio ambiente.",
     "question": "¿Cómo podemos ayudarte hoy?",
     "option": ["Informacion ❓", "Cotizacion ✍️", "Agendar cita 🗓️"]
     }
