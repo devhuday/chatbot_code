@@ -44,12 +44,31 @@ def administrar_chatbot(text,number, messageId, name):
     elif "si, deseo cotizar" in text:
         
         #enviamos el logo de primeras
-        imagex = image_Message(number, get_media_id("consumo", "image"), bot.welcome["message"])
+        imagex = image_Message(number, get_media_id("consumo", "image"), bot.Residencial_cotizar["message"])
         enviar_Mensaje_whatsapp(imagex)
+        
         time.sleep(1)
+        
         body = bot.Residencial_cotizar["question"]
         options = bot.Residencial_cotizar["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        list.append(replyButtonData)
+    
+    elif "Menor a 1000kwh" in text:
+        body = bot.Residencial_coti_menor["message"]
+        options = bot.Residencial_coti_menor["option"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        list.append(replyButtonData)
+        
+    elif "Entre 1000 y 2000Kwh" in text:
+        body = bot.Residencial_coti_entre["message"]
+        options = bot.Residencial_coti_entre["option"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        list.append(replyButtonData)
+    
+    elif "Mayor a 2000Kwh" in text:
+        body = bot.Residencial_coti_mayor["message"]
+        replytext = text_Message(number,body)
         list.append(replyButtonData)
       
     elif "informacion" in text:

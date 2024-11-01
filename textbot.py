@@ -20,5 +20,18 @@ Residencial_cotizar = {
     "option": ["Menor a 1000kwh", "Entre 1000 y 2000Kwh", "Mayor a 2000Kwh"]
     }   
 
+Residencial_coti_menor = {
+    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "option": ["Ahorro hasta 360 kWh", "Ahorro hasta 700 kWh", "Ahorro hasta 1000 kWh"]
+    } 
+
+Residencial_coti_entre = {
+    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"]
+    } 
+
+Residencial_coti_mayor = {
+    "message": "Para poder cotizarte necesito la siguiente informacion numero de contacto, copia o foto de la  factura de energía que aparezca el Nic y enviarlo al correo ingenieria@greenglo.com.co o al numero de whatsapp https://wa.me/573017426368.",
+    } 
 
  
