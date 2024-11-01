@@ -28,13 +28,13 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replyReaction)
         list.append(replyButtonData)
         
-    elif "Cotización" in text:
+    elif "Cotización " in text:
         body = bot.Cotizacion["question"]
         options = bot.Cotizacion["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
       
-    elif "informacion" in text:
+    elif "Informacion ❓" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
         options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
 
