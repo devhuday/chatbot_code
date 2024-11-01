@@ -17,11 +17,11 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(1)
 
     if "hola" in text:
-        body = bot.welcome["message"]
+        body = bot.welcome["question"]
         options = bot.welcome["option"]
         
         #enviamos el logo de primeras
-        imagex = image_Message(number, get_media_id("welcome", "image"), bot.welcome["question"])
+        imagex = image_Message(number, get_media_id("welcome", "image"), bot.welcome["message"])
         enviar_Mensaje_whatsapp(imagex)
         
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
@@ -35,7 +35,13 @@ def administrar_chatbot(text,number, messageId, name):
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
         
-    elif "Residencial" in text:
+    elif "residencial" in text:
+        body = bot.Residencial["message"]
+        options = bot.Residencial["option"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        list.append(replyButtonData)
+    
+    elif "si, deseo cotizar" in text:
         body = bot.Residencial["message"]
         options = bot.Residencial["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)

@@ -13,7 +13,11 @@ Residencial = {
     "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima es de $20 millones, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
     "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar."]
     }
-    
+
+Residencial_cotizar = {
+    "message": "Muy bien, Ahora revisa tu última factura de energía. En la imagen que te he enviado, puedes ver cómo encontrar tu consumo actual.",
+    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar."]
+    }   
 
 
  
