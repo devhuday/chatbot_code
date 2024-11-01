@@ -1,7 +1,7 @@
 from flask import Flask, request
 import sett 
 import services
-
+import flow
 app = Flask(__name__)
 
 @app.route('/bienvenido', methods=['GET'])
@@ -36,7 +36,7 @@ def recibir_mensajes():
         name = contacts['profile']['name']
         text = services.obtener_Mensaje_whatsapp(message)
 
-        services.administrar_chatbot(text, number,messageId,name)
+        flow.administrar_chatbot(text, number,messageId,name)
         return 'enviado'
 
     except Exception as e:
