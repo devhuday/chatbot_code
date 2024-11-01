@@ -27,7 +27,7 @@ images = {
 
 documents = {
     "cotizacion_360": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%20360%20Kwh-mes.pdf?v=1730480577161",
-    "cotizacion_720": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%20720%20Kwh-mes.pdf?v=1730480601443",
+    "cotizacion_700": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%20720%20Kwh-mes.pdf?v=1730480601443",
     "cotizacion_1000": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201000%20Kwh-mes.pdf?v=1730482140026",
     "cotizacion_1300": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201300kwh.pdf?v=1730156408245",
     "cotizacion_1680": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201680kwh.pdf?v=1730482168914",
