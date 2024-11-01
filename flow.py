@@ -54,19 +54,19 @@ def administrar_chatbot(text,number, messageId, name):
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
     
-    elif "Menor a 1000kwh" in text:
+    elif "menor a 1000kwh" in text:
         body = bot.Residencial_coti_menor["message"]
         options = bot.Residencial_coti_menor["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
         
-    elif "Entre 1000 y 2000Kwh" in text:
+    elif "entre 1000 y 2000kwh" in text:
         body = bot.Residencial_coti_entre["message"]
         options = bot.Residencial_coti_entre["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
     
-    elif "Mayor a 2000Kwh" in text:
+    elif "mayor a 2000kwh" in text:
         body = bot.Residencial_coti_mayor["message"]
         replytext = text_Message(number,body)
         list.append(replyButtonData)
