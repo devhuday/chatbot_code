@@ -34,6 +34,12 @@ def administrar_chatbot(text,number, messageId, name):
         options = bot.cotizacion["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
+        
+    elif "Residencial" in text:
+        body = bot.Residencial["message"]
+        options = bot.Residencial["option"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        list.append(replyButtonData)
       
     elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"

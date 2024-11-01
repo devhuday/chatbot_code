@@ -5,8 +5,13 @@ welcome = {
     }
 
 cotizacion = {
-    "message": "Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
+    "message": "Gracias por tu interés en proyectos solares con Greengol S.A.S.! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
     "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
+    }
+
+Residencial = {
+    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima es de $20 millones, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
+    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar."]
     }
     
 
