@@ -9,11 +9,11 @@ def administrar_chatbot(text,number, messageId, name):
     #mensaje que envio el usuario
     text = text.lower()
     list = []
-    print("mensaje del usuario: ",text)
+    print("mensaje del usuario:",text)
 
     #primero marcamos como leido el mensaje del ususario
-    #markRead = markRead_Message(messageId)
-    #enviar_Mensaje_whatsapp(markRead)
+    markRead = markRead_Message(messageId)
+    enviar_Mensaje_whatsapp(markRead)
     time.sleep(1)
 
     if "hola" in text:
@@ -42,10 +42,34 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replyButtonData)
     
     elif "si, deseo cotizar" in text:
-        body = bot.Residencial["message"]
-        options = bot.Residencial["option"]
+        
+        #enviamos el logo de primeras
+        imagex = image_Message(number, get_media_id("consumo", "image"), bot.Residencial_cotizar["message"])
+        enviar_Mensaje_whatsapp(imagex)
+        
+        time.sleep(1)
+        
+        body = bot.Residencial_cotizar["question"]
+        options = bot.Residencial_cotizar["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
+    
+    elif "menor a 1000kwh" in text:
+        body = bot.Residencial_coti_menor["message"]
+        options = bot.Residencial_coti_menor["option"]
+        replyButtonD = buttonReply_Message(number, options, body, footer, "sed3",messageId)
+        list.append(replyButtonD)
+        
+    elif "entre 1000 y 2000kwh" in text:
+        body = bot.Residencial_coti_entre["message"]
+        options = bot.Residencial_coti_entre["option"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        list.append(replyButtonData)
+    
+    elif "mayor a 2000kwh" in text:
+        body = bot.Residencial_coti_mayor["message"]
+        replytext = text_Message(number,body)
+        list.append(replytext)
       
     elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"

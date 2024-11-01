@@ -15,9 +15,24 @@ Residencial = {
     }
 
 Residencial_cotizar = {
-    "message": "Muy bien, Ahora revisa tu última factura de energía. En la imagen que te he enviado, puedes ver cómo encontrar tu consumo actual.",
-    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar."]
+    "message": "Listo, ahora revisa tu última factura de energía como la que se muestra en la imagen, observa tu consumo y responde a la pregunta. ",
+    "question": "*¿En que rango de consumo estas actualmete?*",
+    "option": ["Menor a 1000kwh", "Entre 1000 y 2000Kwh", "Mayor a 2000Kwh"]
     }   
 
+Residencial_coti_menor = {
+    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "option": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
+    } 
+
+Residencial_coti_entre = {
+    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"],
+    "option2": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
+    } 
+
+Residencial_coti_mayor = {
+    "message": "Para poder cotizarte necesito la siguiente informacion numero de contacto, copia o foto de la  factura de energía que aparezca el Nic y enviarlo al correo ingenieria@greenglo.com.co o al numero de whatsapp https://wa.me/573017426368.",
+    } 
 
  
