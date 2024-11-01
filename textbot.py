@@ -15,8 +15,8 @@ Residencial = {
     }
 
 Residencial_cotizar = {
-    "message": "Muy bien, Ahora revisa tu última factura de energía. En la imagen que te he enviado, puedes ver cómo encontrar tu consumo actual.",
-    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar."]
+    "message": "Listo, ahora revisa tu última factura de energía como la que se muestra en la imagen, observa tu consumo y responde a la pregunta. *¿En que rango de consumo estas actualmete?*",
+    "option": ["Menor a 1000kwh", "Entre 1000 y 2000Kwh", "Mayor a 2000Kwh"]
     }   
 
 

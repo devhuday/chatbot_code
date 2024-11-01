@@ -12,8 +12,8 @@ def administrar_chatbot(text,number, messageId, name):
     print("mensaje del usuario: ",text)
 
     #primero marcamos como leido el mensaje del ususario
-    #markRead = markRead_Message(messageId)
-    #enviar_Mensaje_whatsapp(markRead)
+    markRead = markRead_Message(messageId)
+    enviar_Mensaje_whatsapp(markRead)
     time.sleep(1)
 
     if "hola" in text:
@@ -42,8 +42,13 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replyButtonData)
     
     elif "si, deseo cotizar" in text:
-        body = bot.Residencial["message"]
-        options = bot.Residencial["option"]
+        
+        #enviamos el logo de primeras
+        imagex = image_Message(number, get_media_id("consumo", "image"), "")
+        enviar_Mensaje_whatsapp(imagex)
+        
+        body = bot.Residencial_cotizar["message"]
+        options = bot.Residencial_cotizar["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
       
