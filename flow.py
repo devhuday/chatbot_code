@@ -40,7 +40,17 @@ def administrar_chatbot(text,number, messageId, name):
         options = bot.Residencial["option"]
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
-    
+        
+    elif "me parece costoso" in text:
+        body = bot.Residencial_coti_costoso["message"]
+        replytext = text_Message(number,body)
+        list.append(replytext)
+        
+    elif "no deseo cotizar" in text:
+        body = bot.Residencial_coti_negativa["message"]
+        replytext = text_Message(number,body)
+        list.append(replytext)
+        
     elif "si, deseo cotizar" in text:
         
         #enviamos el logo de primeras
@@ -54,6 +64,7 @@ def administrar_chatbot(text,number, messageId, name):
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         list.append(replyButtonData)
     
+    # hilo de cotizacion positiva
     elif "menor a 1000kwh" in text:
         body = bot.Residencial_coti_menor["message"]
         options = bot.Residencial_coti_menor["option"]
@@ -79,7 +90,9 @@ def administrar_chatbot(text,number, messageId, name):
 
         document = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], "Listo 👍🏻", f"Cotización {text[13:-3]} kwh.pdf")
         enviar_Mensaje_whatsapp(document)
-      
+    
+    
+        
     elif "informacion" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
         options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
