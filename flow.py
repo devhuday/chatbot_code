@@ -12,10 +12,10 @@ responses = {
     "menor a 1000kwh": {"body": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
     "entre 1000 y 2000kwh": {"body": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
     "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"]},
-    "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "image")},
+    "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
     "informacion": {"body": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"], "media": ("perro_traje", "sticker")},
     "inteligencia de negocio": {"body": "Buenísima elección. ¿Te gustaría que te enviara un documento PDF con una introducción a nuestros métodos de Inteligencia de Negocio?", "options": ["✅ Sí, envía el PDF.", "⛔ No, gracias"]},
-    "sí, envía el pdf": {"body": "Genial, por favor espera un momento.", "media": ("pelfet", "sticker"), "document": sett.document_url},
+    "sí, envía el pdf": {"body": "Genial, por favor espera un momento.", "media": ("pelfet", "sticker"), "media": ("cotizacion_1300", "documents")},
     "sí, agenda reunión": {"body": "Estupendo. Por favor, selecciona una fecha y hora para la reunión:", "options": ["📅 10: mañana 10:00 AM", "📅 7 de junio, 2:00 PM", "📅 8 de junio, 4:00 PM"]},
     "7 de junio, 2:00 pm": {"body": "Excelente, has seleccionado la reunión para el 7 de junio a las 2:00 PM. Te enviaré un recordatorio un día antes. ¿Necesitas ayuda con algo más hoy?", "options": ["✅ Sí, por favor", "❌ No, gracias."]},
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
@@ -33,7 +33,8 @@ def enviar_respuesta(number, text, messageId, response_data):
         if media_category == "images":
             enviar_Mensaje_whatsapp(image_Message(number, get_media_id(media_id,media_category), response_data["body"]))
         if media_category == "documents":
-            media_id = media_id + text[13:-3]
+            if "cotizacion_" in media_id:
+                media_id = media_id + text[13:-3]
             #document = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], "Listo 👍🏻", f"Cotización {text[13:-3]} kwh.pdf")
             enviar_Mensaje_whatsapp(document_Message(number,get_media_id(media_id,media_category), "Listo 👍🏻", f"Cotización {text[13:-3]} kwh.pdf"))
         time.sleep(1)  # Espera un segundo
@@ -53,7 +54,6 @@ def enviar_respuesta(number, text, messageId, response_data):
     #list.append(replyReaction)
 
     return list
-
 
 def administrar_chatbot(text, number, messageId, name):
     text = text.lower()
