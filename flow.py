@@ -5,12 +5,12 @@ import sett
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
-    "cotizacion": {"body": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
-    "residencial": {"body": bot.Residencial["message"], "options": bot.Residencial["option"]},
+    "cotizacion": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
+    "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_mayor["message"]},
-    "si, deseo cotizar": {"body": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
-    "menor a 1000kwh": {"body": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
-    "entre 1000 y 2000kwh": {"body": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
+    "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
+    "menor a 1000kwh": {"question": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
+    "entre 1000 y 2000kwh": {"question": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
     "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"]},
     "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
     "informacion": {"body": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"], "media": ("perro_traje", "sticker")},
@@ -26,21 +26,26 @@ footer = "Equipo Greengol"
 
 def enviar_respuesta(number, text, messageId, response_data):
     list = []
-
+    print(response_data)
     # Envía la imagen si existe
     if "media" in response_data:
         media_id, media_category = response_data["media"]
-        if media_category == "images":
-            enviar_Mensaje_whatsapp(image_Message(number, get_media_id(media_id,media_category), response_data["body"]))
+        if media_category == "image":
+            print("imamajmjam")
+            mediax = image_Message(number, get_media_id(media_id, media_category), response_data["body"])
+            
         if media_category == "documents":
             if "cotizacion_" in media_id:
                 media_id = media_id + text[13:-3]
-            #document = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], "Listo 👍🏻", f"Cotización {text[13:-3]} kwh.pdf")
-            enviar_Mensaje_whatsapp(document_Message(number,get_media_id(media_id,media_category), "Listo 👍🏻", f"Cotización {text[13:-3]} kwh.pdf"))
-        time.sleep(1)  # Espera un segundo
+            mediax = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], response_data["body"], f"Cotización {text[13:-3]} kwh.pdf")
+            
+            #enviar_Mensaje_whatsapp(document_Message(number,get_media_id(media_id,media_category), "Listo 👍🏻", f"Cotización {text[13:-3]} kwh.pdf"))
+        #time.sleep(1)  # Espera un segundo
+        list.append(mediax)
 
     # Envía el texto
     if "body" in response_data and not ("media" in response_data):
+        print("hdnijasndjiam")
         replytext = text_Message(number, response_data["body"])
         list.append(replytext)
 
@@ -63,10 +68,10 @@ def administrar_chatbot(text, number, messageId, name):
     time.sleep(1)
     
     for keyword in responses:
-        if text in keyword:
+        if keyword in text:
             response_data = responses[keyword]
             list = enviar_respuesta(number, text, messageId, response_data)
-            return list
+            continue
 
     for item in list:
         enviar_Mensaje_whatsapp(item)
