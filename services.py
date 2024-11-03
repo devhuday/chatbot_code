@@ -145,6 +145,21 @@ def document_Message(number, url, caption, filename):
     )
     return data
 
+def contact_Message(number, url, caption, filename,name,phone):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "contact",
+            "contact": {
+                "name": name,
+                "phone": phone
+            }
+        }
+    )
+    return data
+
 def image_Message(number, url, caption):
     data = json.dumps(
         {
@@ -181,6 +196,8 @@ def get_media_id(media_name , media_type):
         media_id = sett.stickers.get(media_name, None)
     elif media_type == "image":
         media_id = sett.images[media_name]
+    elif media_type == "documents":
+        media_id = sett.documents[media_name]
     #elif media_type == "video":
     #    media_id = sett.videos.get(media_name, None)
     #elif media_type == "audio":
