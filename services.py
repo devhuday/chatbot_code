@@ -195,7 +195,7 @@ def get_media_id(media_name , media_type):
     if media_type == "sticker":
         media_id = sett.stickers.get(media_name, None)
     elif media_type == "image":
-        media_id = sett.images[media_name]
+        media_id = sett.image[media_name]
     elif media_type == "documents":
         media_id = sett.documents[media_name]
     #elif media_type == "video":
