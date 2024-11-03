@@ -11,7 +11,7 @@ cotizacion = {
 
 Residencial = {
     "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima es de $20 millones, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
-    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar."]
+    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
 Residencial_cotizar = {
@@ -35,4 +35,14 @@ Residencial_coti_mayor = {
     "message": "Para poder cotizarte necesito la siguiente informacion numero de contacto, copia o foto de la  factura de energía que aparezca el Nic y enviarlo al correo ingenieria@greenglo.com.co o al numero de whatsapp https://wa.me/573017426368.",
     } 
 
+Residencial_coti_pdf = {
+    "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación.*"
+    } 
+
+Residencial_coti_costoso = {
+    "message": "Entiendo que el costo de 20 millones para el sistema solar puede parecer alto.\n\nSin embargo, te puedo presentar otras opciones. Una opción puede ser considerar un sistema solar *off-grid*, es decir, no conectado a la red eléctrica. Este tipo de sistema puede ser más económico ya que no requiere la conexión a la red eléctrica y puede ser diseñado para cubrir tus necesidades energéticas específicas."
+    } 
  
+Residencial_coti_negativa = {
+     "message": "Entiendo, si decides no cotizar en este momento.\n\n Si en algún momento cambias de opinión o tienes alguna otra pregunta, no dudes en contactarnos."
+    }
