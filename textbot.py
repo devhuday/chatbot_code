@@ -46,8 +46,3 @@ Residencial_coti_costoso = {
 Residencial_coti_negativa = {
      "message": "Entiendo, si decides no cotizar en este momento.\n\n Si en algún momento cambias de opinión o tienes alguna otra pregunta, no dudes en contactarnos."
     }
-
-contact_inger = {
-    "name": "ingeniero Heiner",
-    "number": "573017525547"
-    }

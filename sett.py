@@ -34,6 +34,9 @@ documents = {
     "cotizacion_1980": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201980kwh.pdf?v=1730482185428"
 }
 
-
+contact = {
+    "name": "ingeniero Heiner",
+    "number": "573017525547"
+}
 
 
