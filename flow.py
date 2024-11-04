@@ -15,7 +15,7 @@ responses = {
     "entre 1000 y 2000kwh": {"question": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
     "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"]},
     "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
-    "informacion": {"body": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]},
+    "informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]},
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
 }
 
