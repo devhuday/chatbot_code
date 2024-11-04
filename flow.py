@@ -1,7 +1,7 @@
 from services import *
 import textbot as bot
 import sett
-from . import database
+import database
 
 # Diccionario para almacenar los mensajes
 responses = {
