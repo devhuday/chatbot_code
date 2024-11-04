@@ -76,7 +76,9 @@ def administrar_chatbot(text, number, messageId, name):
             response_data = responses[keyword]
             list = enviar_respuesta(number, text, messageId, response_data, conver)
             continue
-
-    for item in list:
-        enviar_Mensaje_whatsapp(item)
-        time.sleep(1)
+    if list :        
+        for item in list:
+            enviar_Mensaje_whatsapp(item)
+            time.sleep(1)
+    else:
+        print("no entendi nada")
