@@ -151,11 +151,22 @@ def contact_Message(number,name,phone):
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to": number,
-            "type": "contact",
-            "contact": {
-                "name": name,
-                "phone": phone
-            }
+            "type": "contacts",
+            "contacts": [
+              {
+                "name": {
+                  "first_name": "Asesor Greenglo s.a.s",
+                  "formatted_name": "Asesor Greenglo s.a.s"
+                },
+                "phones": [
+                  {
+                    "phone": "+57 3017426368",
+                    "wa_id": "573017426368",
+                    "type": "Celular"
+                  }
+                ]
+              }
+            ]
         }
     )
     return data
