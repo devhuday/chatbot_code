@@ -16,6 +16,7 @@ class Conversacion:
         
         
     def check_User(self):
+        print("dnqijnd")
         user = self.collection.find_one({"numero_id": self.number})
         print(user)
         return user
