@@ -35,8 +35,8 @@ documents = {
 }
 
 contact = {
-    "name": "ingeniero Heiner",
-    "number": "3017525547"
+    "name": "Grupo Greenglo s.a.s",
+    "number": "3017426368"
 }
 
 
