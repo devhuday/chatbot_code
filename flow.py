@@ -26,7 +26,7 @@ footer = "Equipo Greengol"
 
 def enviar_respuesta(number, text, messageId, response_data, conver):
     list = []
-    #print(response_data)
+    print(response_data)
     
     # Envía la imagen 
     if "media" in response_data:
