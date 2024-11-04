@@ -4,3 +4,5 @@ cluster = "database-greengol-0"
 
 dbname = "whatsapp_conversations"
 collect = "conversations"
+
+print("")
