@@ -8,7 +8,6 @@ class Conversacion:
         self.username = username
         self.number = number
         self.messageId = messageId
-        print("")
         
         # URI de conexión
         self.client = MongoClient(f"mongodb+srv://{credential.user}:{credential.password}@{credential.cluster}.amtem.mongodb.net/{credential.dbname}?retryWrites=true&w=majority")
