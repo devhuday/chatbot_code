@@ -2,6 +2,7 @@ from services import *
 import textbot as bot
 import sett
 import database
+import ia
 
 # Diccionario para almacenar los mensajes
 responses = {
@@ -81,4 +82,5 @@ def administrar_chatbot(text, number, messageId, name):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        print("no entendi nada")
+        response = ia(text)
+        enviar_Mensaje_whatsapp(text_Message(number,response))
