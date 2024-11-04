@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import datetime
-from library import credential
+import credential
 
 class Conversacion:
     def __init__(self, number, messageId, username):
@@ -17,6 +17,7 @@ class Conversacion:
         
     def check_User(self):
         user = self.collection.find_one({"numero_id": self.number})
+        print(user)
         return user
 
 
@@ -24,8 +25,8 @@ class Conversacion:
         user = {
             "usuario_id": self.username,
             "numero_id": self.number,
-            "fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
-            "fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
+            #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
+            #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
             "mensajes": []
         }
         
@@ -45,6 +46,6 @@ class Conversacion:
             "timestamp": datetime.datetime.now(datetime.timezone.utc)
         }
         
-        newmessage = self.collection.update_one(filtro, {"$push": {"mensajes": newmessage}})
+        newmessage = self.collection.update_one(filtro, {"$push": {"mensajes": message}})
 
     
