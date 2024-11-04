@@ -145,7 +145,7 @@ def document_Message(number, url, caption, filename):
     )
     return data
 
-def contact_Message(number, url, caption, filename,name,phone):
+def contact_Message(number,name,phone):
     data = json.dumps(
         {
             "messaging_product": "whatsapp",

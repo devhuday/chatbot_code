@@ -1,17 +1,17 @@
 welcome = {
-    "message": "¡Hola! 😊 ¡Bienvenido a Greengol  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidaar el medio ambiente.",
+    "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidaar el medio ambiente.",
     "question": "¿Cómo podemos ayudarte hoy?",
     "option": ["Informacion ❓", "Cotizacion ✍️", "Agendar cita 🗓️"]
     }
 
 cotizacion = {
-    "message": "Gracias por tu interés en proyectos solares con Greengol S.A.S.! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
+    "message": "Gracias por tu interés en proyectos solares con Greenglo S.A.S.! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
     "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
     }
 
 Residencial = {
-    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima es de $20 millones, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
-    "option": ["si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
+    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
+    "option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
 Residencial_cotizar = {
@@ -32,7 +32,7 @@ Residencial_coti_entre = {
     } 
 
 Residencial_coti_mayor = {
-    "message": "Para poder cotizarte necesito la siguiente informacion numero de contacto, copia o foto de la  factura de energía que aparezca el Nic y enviarlo al correo ingenieria@greenglo.com.co o al numero de whatsapp https://wa.me/573017426368.",
+    "message": "Para poder cotizarte necesito la siguiente informacion numero de contacto, copia o foto de la  factura de energía que aparezca el Nic y enviarlo al correo ingenieria@greenglo.com.co o al numero de whatsapp.",
     } 
 
 Residencial_coti_pdf = {
@@ -45,4 +45,9 @@ Residencial_coti_costoso = {
  
 Residencial_coti_negativa = {
      "message": "Entiendo, si decides no cotizar en este momento.\n\n Si en algún momento cambias de opinión o tienes alguna otra pregunta, no dudes en contactarnos."
+    }
+
+contact_inger = {
+    "name": "ingeniero Heiner",
+    "number": "573017525547"
     }
