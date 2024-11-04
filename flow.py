@@ -82,5 +82,6 @@ def administrar_chatbot(text, number, messageId, name):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        response = ia(text)
+        response = ia.Request(text)
         enviar_Mensaje_whatsapp(text_Message(number,response))
+        conver.new_message("bot_Greengol",response)
