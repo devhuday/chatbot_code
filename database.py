@@ -9,15 +9,17 @@ class Conversacion:
         self.number = number
         self.messageId = messageId
         
-        # URI de conexión
-        self.client = MongoClient(f"mongodb+srv://{credential.user}:{credential.password}@{credential.cluster}.amtem.mongodb.net/{credential.dbname}?retryWrites=true&w=majority")
-        self.db = self.client[credential.dbname]
-        self.collection = self.db[credential.collect]
+        
         
         
     def check_User(self):
+        # URI de conexión
+        client = MongoClient(f"mongodb+srv://{credential.user}:{credential.password}@{credential.cluster}.amtem.mongodb.net/{credential.dbname}?retryWrites=true&w=majority")
+        db = self.client[credential.dbname]
+        collection = self.db[credential.collect]
         print("dnqijnd")
-        user = self.collection.find_one({"numero_id": self.number})
+        user = collection.find_one({"numero_id": self.number})
+        print("dnqijnd")
         print(user)
         return user
 
