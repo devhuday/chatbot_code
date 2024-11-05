@@ -7,7 +7,7 @@ import ia
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
-    "cotizacion": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
+    "cotizacion": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_mayor["message"]},
     "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
