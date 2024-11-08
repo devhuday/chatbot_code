@@ -104,4 +104,4 @@ def administrar_chatbot(text, number, messageId, name):
         else:
             answer_ia = ia.Request(text)
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-        conver.new_message("bot_Greengol",answer_ia)
+    conver.new_message("bot_Greengol",answer_ia)
