@@ -19,6 +19,10 @@ responses = {
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
 }
 
+response_IA = {
+    "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid para mi plan de energia solar"}
+}
+
 footer = "Equipo Greenglo"
 
 def enviar_respuesta(number, text, messageId, response_data, conver):
@@ -53,11 +57,25 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         name_id, number_id = response_data["contact"]
         replycontact = contact_Message(number,sett.contact[name_id],sett.contact[number_id])
         list.append(replycontact)
-
+    
+    if "responseIA" in response_data:
+        general_prompt = response_data["responseIA"]
+        answer_ia = ia.Request(general_prompt)
+        replytext = text_Message(number,answer_ia)
+        list.append(replytext)
+        
     # Envía la reacción
     #replyReaction = replyReaction_Message(number, messageId, "🫡")
     #list.append(replyReaction)
 
+    return list
+
+def recorrer(number, text, messageId, conver):
+    for keyword in responses:
+        if keyword in text:
+            response_data = responses[keyword]
+            list = enviar_respuesta(number, text, messageId, response_data, conver)
+            continue
     return list
 
 def administrar_chatbot(text, number, messageId, name):
@@ -73,16 +91,16 @@ def administrar_chatbot(text, number, messageId, name):
     enviar_Mensaje_whatsapp(markRead_Message(messageId))
     time.sleep(1)
     
-    for keyword in responses:
-        if keyword in text:
-            response_data = responses[keyword]
-            list = enviar_respuesta(number, text, messageId, response_data, conver)
-            continue
+    list = recorrer(responses,number, text, messageId, conver)
     if list :        
         for item in list:
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        response = ia.Request(text)
-        enviar_Mensaje_whatsapp(text_Message(number,response))
-        conver.new_message("bot_Greengol",response)
+        list_2 = recorrer(response_IA,number, text, messageId, conver)
+        if list_2 :
+            enviar_Mensaje_whatsapp(list_2)
+        else:
+            answer_ia = ia.Request(text)
+            enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+        conver.new_message("bot_Greengol",answer_ia)
