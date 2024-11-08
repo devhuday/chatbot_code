@@ -8,6 +8,7 @@ import ia
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
     "cotizacion": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
+    "on grid": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_mayor["message"]},
     "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
@@ -17,6 +18,8 @@ responses = {
     "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
     "informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Sobre nosotros", "la energia solar", "contacto"]},
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
+
+
 }
 
 response_IA = {
