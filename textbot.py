@@ -6,7 +6,7 @@ welcome = {
 
 cotizacion = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Antes de seguir con la cotizacion necesitamos saber lo siguiente:\n\n *¿Que tipo sistema fotovoltaico tienes en mente implementar?*",
-    "option": ["On Grid", "Off Grid", "no estoy seguro"]
+    "option": ["On Grid", "Off Grid", "Hibrido","No estoy seguro"]
     }
 
 nameandnumber = {
@@ -27,18 +27,18 @@ cotizacion_offgrid = {
     }
 
 Residencial = {
-    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos para sistemas entre 300-360kwh, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
+    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno en 1.5 años, una vida útil de más de 25 años, descuento en renta y ¡exento de IVA!  📈💡",
     "option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
 Residencial_cotizar = {
-    "message": "Listo, ahora revisa tu última factura de energía como la que se muestra en la imagen, observa tu consumo y responde a la pregunta. ",
+    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen, observa tu consumo y responde a la pregunta. ",
     "question": "*¿En que rango de consumo estas actualmete?*",
     "option": ["Menor a 1000kwh", "Entre 1000 y 2000Kwh", "Mayor a 2000Kwh"]
     }   
 
 Residencial_coti_menor = {
-    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hata el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
     "option": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
     } 
 
@@ -53,7 +53,7 @@ Residencial_coti_mayor = {
     } 
 
 Residencial_coti_pdf = {
-    "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación.*"
+    "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación de area y tipo de techo.*"
     } 
 
 Residencial_coti_costoso = {
