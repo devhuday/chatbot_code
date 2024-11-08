@@ -12,7 +12,7 @@ responses = {
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
-    "me parece costoso": {"body": bot.Residencial_coti_mayor["message"]},
+    "me parece costoso": {"body": bot.Residencial_coti_costoso["message"]},
     "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
     "menor a 1000kwh": {"question": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
     "entre 1000 y 2000kwh": {"question": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},

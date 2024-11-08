@@ -27,7 +27,7 @@ cotizacion_offgrid = {
     }
 
 Residencial = {
-    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
+    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos para sistemas entre 300-360kwh, con un retorno en 1.5 años, una vida útil de más de 25 años y ¡exentos de IVA! 📈💡",
     "option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
@@ -57,7 +57,11 @@ Residencial_coti_pdf = {
     } 
 
 Residencial_coti_costoso = {
-    "message": "Entiendo que el costo de 20 millones para el sistema solar puede parecer alto.\n\nSin embargo, te puedo presentar otras opciones. Una opción puede ser considerar un sistema solar *off-grid*, es decir, no conectado a la red eléctrica. Este tipo de sistema puede ser más económico ya que no requiere la conexión a la red eléctrica y puede ser diseñado para cubrir tus necesidades energéticas específicas."
+    "message": """Entiendo que el costo de 20 millones para el sistema solar puede parecer alto.
+Sin embargo, te puedo presentar otras opciones. Una opción puede ser considerar 
+un sistema solar *off grid*, es decir, no conectado a la red eléctrica. Este tipo 
+de sistema puede ser más económico ya que no requiere la conexión a la red eléctrica
+por lo que puede ser diseñado para cubrir solo tus necesidades energéticas de elementos específicos. """
     } 
  
 Residencial_coti_negativa = {
