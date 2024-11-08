@@ -19,10 +19,8 @@ responses = {
     "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "industrial": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
-    "informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Sobre nosotros", "la energia solar", "contacto"]},
+    #"informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Sobre nosotros", "Energia solar", "Contacto"]},
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
-
-
 }
 
 response_IA = {
