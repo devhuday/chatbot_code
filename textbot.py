@@ -4,12 +4,24 @@ welcome = {
     "option": ["Informacion ❓", "Cotizacion ✍️", "Agendar cita 🗓️"]
     }
 
-cotizacion_grid = {
+cotizacion = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Antes de seguir con la cotizacion necesitamos saber lo siguiente:\n\n *¿Que tipo sistema fotovoltaico tienes en mente implementar?*",
     "option": ["On Grid", "Off Grid", "no estoy seguro"]
     }
 
-cotizacion = {
+nameandnumber = {
+    "message": """antes de realizar necesito que me facilite su 
+    nombre, telefono y correo en un solo mensaj 
+    \n\n*ej: luis gomez, 3700892727, luis@gmail.com*""",
+    
+    }
+
+cotizacion_grid = {
+    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
+    "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
+    }
+
+cotizacion_offgrid = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
     "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
     }
