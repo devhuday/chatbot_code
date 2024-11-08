@@ -109,5 +109,10 @@ def administrar_chatbot(text, number, messageId, name):
                 time.sleep(1)
         else:
             answer_ia = ia.Request(text)
-            enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-            conver.new_message("bot_Greengol",answer_ia)
+            if "cotizar" in answer_ia:
+                answer_ia = answer_ia[:-30]
+                replyButtonData = buttonReply_Message(number, "cotizar", answer_ia, footer, "sed1", messageId)
+                enviar_Mensaje_whatsapp(replyButtonData)
+            else:    
+                enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+                conver.new_message("bot_Greengol",answer_ia)
