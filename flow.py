@@ -8,7 +8,7 @@ import ia
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
     "cotizacion": {"body": bot.nameandnumber["message"]},
-    #"cotizacion": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
+    "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
