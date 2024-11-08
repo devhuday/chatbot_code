@@ -20,7 +20,7 @@ responses = {
 }
 
 response_IA = {
-    "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid para mi plan de energia solar"}
+    "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid"}
 }
 
 footer = "Equipo Greenglo"
@@ -98,10 +98,10 @@ def administrar_chatbot(text, number, messageId, name):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        list_2 = recorrer(response_IA,number, text, messageId, conver)
+        list_2 = recorrer(response_IA, number, text, messageId, conver)
         if list_2 :
             enviar_Mensaje_whatsapp(list_2)
         else:
             answer_ia = ia.Request(text)
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-    conver.new_message("bot_Greengol",answer_ia)
+            conver.new_message("bot_Greengol",answer_ia)
