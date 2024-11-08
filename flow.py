@@ -62,7 +62,7 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         general_prompt = response_data["responseIA"]
         answer_ia = ia.Request(general_prompt)
         replytextIA = text_Message(number,answer_ia)
-        list.append(replytextIA)
+        list.append(replytext)
         
     # Envía la reacción
     #replyReaction = replyReaction_Message(number, messageId, "🫡")
@@ -100,7 +100,9 @@ def administrar_chatbot(text, number, messageId, name):
     else:
         list_2 = recorrer(response_IA, number, text, messageId, conver)
         if list_2 :
-            enviar_Mensaje_whatsapp(list_2)
+            for item in list_2:
+                enviar_Mensaje_whatsapp(item)
+                time.sleep(1)
         else:
             answer_ia = ia.Request(text)
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
