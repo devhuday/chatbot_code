@@ -70,10 +70,11 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
 
     return list
 
-def recorrer(number, text, messageId, conver):
-    for keyword in responses:
+def recorrer(respont, number, text, messageId, conver):
+    list = None
+    for keyword in respont:
         if keyword in text:
-            response_data = responses[keyword]
+            response_data = respont[keyword]
             list = enviar_respuesta(number, text, messageId, response_data, conver)
             continue
     return list
