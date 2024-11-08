@@ -7,7 +7,7 @@ import ia
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
-    "cotizacion": {"question": bot.nameandnumber["message"]},
+    "cotizacion": {"body": bot.nameandnumber["message"]},
     #"cotizacion": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
