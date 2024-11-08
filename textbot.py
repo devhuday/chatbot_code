@@ -10,9 +10,9 @@ cotizacion = {
     }
 
 nameandnumber = {
-    "message": """antes de realizar necesito que me facilite su 
-    nombre, telefono y correo en un solo mensaj 
-    \n\n*ej: luis gomez, 3700892727, luis@gmail.com*"""
+    "message": """Antes de generar su cotización, por favor proporcione en un solo 
+mensaje su nombre completo, teléfono y correo electrónico.
+Ejemplo: Luis Gómez, 3700892727, luis@gmail.com."""
 
     }
 
