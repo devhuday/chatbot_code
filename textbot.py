@@ -57,11 +57,14 @@ Residencial_coti_pdf = {
     } 
 
 Residencial_coti_costoso = {
-    "message": """Entiendo que el costo de 20 millones para el sistema solar puede parecer alto.
-Sin embargo, te puedo presentar otras opciones. Una opción puede ser considerar 
-un sistema solar *off grid*, es decir, no conectado a la red eléctrica. Este tipo 
-de sistema puede ser más económico ya que no requiere la conexión a la red eléctrica
-por lo que puede ser diseñado para cubrir solo tus necesidades energéticas de elementos específicos. """
+    "message": """Entiendo que el costo de 20 millones para el sistema solar puede 
+parecer alto. Sin embargo, te puedo presentar otras opciones. Una opción 
+puede ser considerar un sistema solar *off grid*, estos no estan conectados
+a la red eléctrica. 
+
+Este tipo de sistema puede ser más económico ya que no requiere la conexión 
+a la red eléctrica por lo que puede ser diseñado para cubrir necesidades 
+energéticas de elementos específicos. """
     } 
  
 Residencial_coti_negativa = {
