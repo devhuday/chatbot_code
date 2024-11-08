@@ -6,7 +6,7 @@ welcome = {
 
 cotizacion = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Antes de seguir con la cotizacion necesitamos saber lo siguiente:\n\n *¿Que tipo sistema fotovoltaico tienes en mente implementar?*",
-    "option": ["On Grid", "Off Grid","No estoy seguro"]
+    "option": ["On Grid", "Off Grid", "Off","No estoy seguro"]
     }
 
 nameandnumber = {
