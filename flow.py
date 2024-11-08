@@ -62,7 +62,7 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         general_prompt = response_data["responseIA"]
         answer_ia = ia.Request(general_prompt)
         replytextIA = text_Message(number,answer_ia)
-        list.append(replytext)
+        list.append(replytextIA)
         
     # Envía la reacción
     #replyReaction = replyReaction_Message(number, messageId, "🫡")
