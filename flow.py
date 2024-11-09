@@ -7,16 +7,24 @@ import ia
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
-    "cotizacion": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
+    "cotizacion": {"body": bot.nameandnumber["message"]},
+    "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
+    "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
+    "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
-    "me parece costoso": {"body": bot.Residencial_coti_mayor["message"]},
+    "me parece costoso": {"body": bot.Residencial_coti_costoso["message"]},
     "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
     "menor a 1000kwh": {"question": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
     "entre 1000 y 2000kwh": {"question": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
-    "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"], "contact": bot.contact_inger["number"]},
+    "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
+    "industrial": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
-    "informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Sobre nosotros", "la energia solar", "contacto"]},
+    #"informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Sobre nosotros", "Energia solar", "Contacto"]},
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
+}
+
+response_IA = {
+    "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid"}
 }
 
 footer = "Equipo Greenglo"
@@ -50,13 +58,29 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         list.append(replyButtonData)
     
     if "contact" in response_data:
-        replycontact = contact_Message(number,"Ing Heiner",response_data["contact"])
+        name_id, number_id = response_data["contact"]
+        replycontact = contact_Message(number,sett.contact[name_id],sett.contact[number_id])
         list.append(replycontact)
-
+    
+    if "responseIA" in response_data:
+        general_prompt = response_data["responseIA"]
+        answer_ia = ia.Request(general_prompt)
+        replytextIA = text_Message(number,answer_ia)
+        list.append(replytextIA)
+        
     # Envía la reacción
     #replyReaction = replyReaction_Message(number, messageId, "🫡")
     #list.append(replyReaction)
 
+    return list
+
+def recorrer(respont, number, text, messageId, conver):
+    list = None
+    for keyword in respont:
+        if keyword in text:
+            response_data = respont[keyword]
+            list = enviar_respuesta(number, text, messageId, response_data, conver)
+            continue
     return list
 
 def administrar_chatbot(text, number, messageId, name):
@@ -72,16 +96,25 @@ def administrar_chatbot(text, number, messageId, name):
     enviar_Mensaje_whatsapp(markRead_Message(messageId))
     time.sleep(1)
     
-    for keyword in responses:
-        if keyword in text:
-            response_data = responses[keyword]
-            list = enviar_respuesta(number, text, messageId, response_data, conver)
-            continue
+    list = recorrer(responses,number, text, messageId, conver)
     if list :        
         for item in list:
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        response = ia.Request(text)
-        enviar_Mensaje_whatsapp(text_Message(number,response))
-        conver.new_message("bot_Greengol",response)
+        list_2 = recorrer(response_IA, number, text, messageId, conver)
+        if list_2 :
+            for item in list_2:
+                enviar_Mensaje_whatsapp(item)
+                time.sleep(1)
+        else:
+            answer_ia = ia.Request(text)
+            if "cotizar" in answer_ia:
+                answer_ia = answer_ia[:-19]+"presiona Cotizar."
+                print(answer_ia)
+                print(number)
+                replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
+                enviar_Mensaje_whatsapp(replyButtonData)
+            else:    
+                enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+                conver.new_message("bot_Greengol",answer_ia)

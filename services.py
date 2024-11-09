@@ -146,6 +146,8 @@ def document_Message(number, url, caption, filename):
     return data
 
 def contact_Message(number,name,phone):
+    phone_x = "+57 "+phone
+    wa_id = "57"+phone
     data = json.dumps(
         {
             "messaging_product": "whatsapp",
@@ -155,13 +157,13 @@ def contact_Message(number,name,phone):
             "contacts": [
               {
                 "name": {
-                  "first_name": "Asesor Greenglo s.a.s",
-                  "formatted_name": "Asesor Greenglo s.a.s"
+                  "first_name": name,
+                  "formatted_name": name
                 },
                 "phones": [
                   {
-                    "phone": "+57 3017426368",
-                    "wa_id": "573017426368",
+                    "phone": phone_x,
+                    "wa_id": wa_id,
                     "type": "Celular"
                   }
                 ]
