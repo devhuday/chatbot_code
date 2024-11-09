@@ -110,8 +110,10 @@ def administrar_chatbot(text, number, messageId, name):
         else:
             answer_ia = ia.Request(text)
             if "cotizar" in answer_ia:
-                answer_ia = answer_ia[:-30]
-                replyButtonData = buttonReply_Message(number, "cotizar", answer_ia, footer, "sed1", messageId)
+                answer_ia = answer_ia[:-19]+"presiona Cotizar."
+                print(answer_ia)
+                print(number)
+                replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
                 enviar_Mensaje_whatsapp(replyButtonData)
             else:    
                 enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
