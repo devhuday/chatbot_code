@@ -1,40 +1,36 @@
 from pymongo import MongoClient
 from credential import *
 
-def historial():
+def historialwrite(nameuser,step):
     # Conexión a la base de datos
     client = MongoClient(f"mongodb+srv://{user}:{password}@{cluster}.amtem.mongodb.net/{dbname}?retryWrites=true&w=majority")
     db = client[dbname]
     collection = db[collect]
 
-    # Identificar al usuario por su usuario_id o numero_id
-    filtro = {"usuario_id": "Hudaay✨"}  # Puedes usar otro campo si lo prefieres
+    filtro = {"usuario_id": nameuser}  # Puedes usar otro campo si lo prefieres
 
-    # Proyección para obtener los tres últimos mensajes
     pipeline = [
         {"$match": filtro},  # Filtrar por el usuario
         {"$project": {
-            "mensajes": {"$slice": ["$mensajes", -3]}  # Obtener los últimos tres elementos del array
+            "mensajes": {"$slice": ["$mensajes", step]}  # Obtener los últimos tres elementos del array
         }}
     ]
 
-    # Ejecutar la consulta
     resultado = list(collection.aggregate(pipeline))
+    return resultado
+
+def historialread(resultado, clave):
     check = None
-    if resultado:
-        
-        print("+++++++++----------++++++++++++")
-        for mensaje in resultado[0]["mensajes"]:
-            print(f"Emisor: {mensaje['emisor']}")
-            print(f"Mensaje: {mensaje['mensaje']}")
-            print(f"Timestamp: {mensaje['timestamp']}")
-            print("----------")
-        print("+++++++++----------++++++++++++")
-        
-        for mensaj in resultado[0]["mensajes"]:
-            if mensaj['mensaje'] == "agendar cita 🗓️":
-                check = "se envia el correo"
-        print(check) if check else print("No se envia el correo")
-    else:
-        print("No se encontraron resultados.")
+    
+    for mensaje in resultado[0]["mensajes"]:
+        print(f"Emisor: {mensaje['emisor']}")
+        print(f"Mensaje: {mensaje['mensaje']}")
+        print(f"Timestamp: {mensaje['timestamp']}")
+        print("----------")
+    
+    for mensaj in resultado[0]["mensajes"]:
+        if mensaj['mensaje'] == clave:
+            check = "se envia el correo"
+    print(check) if check else print("No se envia el correo")
+
     return check

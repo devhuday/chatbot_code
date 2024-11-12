@@ -113,19 +113,21 @@ def administrar_chatbot(text, number, messageId, name):
             if "cotizar" in answer_ia:
                 # Ejemplo de uso
                 
-                authorization = history.historial()
+                hist = history.historialwrite(name, -3)
+                authorization = history.historialread(hist,"agendar cita 🗓️")
+                
                 if authorization:
                     destinatario = "hudaayy14@gmail.com"
                     asunto = "Agenda cita"
                     mensaje = text
-
                     sendemail.enviar_correo(destinatario, asunto, mensaje)
-                    
-                answer_ia = answer_ia[:-19]+"presiona Cotizar."
-                print(answer_ia)
-                print(number)
-                replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
-                enviar_Mensaje_whatsapp(replyButtonData)
+                    answer_ia = ia.Request(text+" estos son mis dato para agendar una cita con greenglo")
+                else:
+                    answer_ia = answer_ia[:-17]+"presiona Cotizar."
+                    print(answer_ia)
+                    print(number)
+                    replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
+                    enviar_Mensaje_whatsapp(replyButtonData)
             else:    
                 enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
                 conver.new_message("bot_Greengol",answer_ia)
