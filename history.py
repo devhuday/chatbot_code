@@ -20,7 +20,7 @@ def historial():
 
     # Ejecutar la consulta
     resultado = list(collection.aggregate(pipeline))
-
+    check = None
     if resultado:
         
         print("+++++++++----------++++++++++++")
@@ -30,10 +30,11 @@ def historial():
             print(f"Timestamp: {mensaje['timestamp']}")
             print("----------")
         print("+++++++++----------++++++++++++")
-        check = None
+        
         for mensaj in resultado[0]["mensajes"]:
             if mensaj['mensaje'] == "agendar cita 🗓️":
                 check = "se envia el correo"
         print(check) if check else print("No se envia el correo")
     else:
         print("No se encontraron resultados.")
+    return check

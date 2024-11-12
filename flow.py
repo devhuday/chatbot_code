@@ -112,14 +112,15 @@ def administrar_chatbot(text, number, messageId, name):
             answer_ia = ia.Request(text)
             if "cotizar" in answer_ia:
                 # Ejemplo de uso
-                destinatario = "hudaayy14@gmail.com"
-                asunto = "Agenda cita"
-                mensaje = "Hola, este es puuto6 un correo enviado automáticamente usando Python.sdgfdgvdfdfvdfvdfvs"
+                
+                authorization = history.historial()
+                if authorization:
+                    destinatario = "hudaayy14@gmail.com"
+                    asunto = "Agenda cita"
+                    mensaje = text
 
-                sendemail.enviar_correo(destinatario, asunto, mensaje)
-                
-                history.historial()
-                
+                    sendemail.enviar_correo(destinatario, asunto, mensaje)
+                    
                 answer_ia = answer_ia[:-19]+"presiona Cotizar."
                 print(answer_ia)
                 print(number)

@@ -29,7 +29,7 @@ def enviar_Mensaje_whatsapp(data):
         whatsapp_url = sett.whatsapp_url
         headers = {'Content-Type': 'application/json',
                    'Authorization': 'Bearer ' + whatsapp_token}
-        print("se envia ", data)
+        #print("se envia ", data)
         response = requests.post(whatsapp_url, 
                                  headers=headers, 
                                  data=data)
