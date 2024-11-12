@@ -122,6 +122,7 @@ def administrar_chatbot(text, number, messageId, name):
                     mensaje = text
                     sendemail.enviar_correo(destinatario, asunto, mensaje)
                     answer_ia = ia.Request(text+" estos son mis dato para agendar una cita con greenglo")
+                    enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
                 else:
                     answer_ia = answer_ia[:-17]+"presiona Cotizar."
                     print(answer_ia)
@@ -130,4 +131,4 @@ def administrar_chatbot(text, number, messageId, name):
                     enviar_Mensaje_whatsapp(replyButtonData)
             else:    
                 enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-                conver.new_message("bot_Greengol",answer_ia)
+            conver.new_message("bot_Greengol",answer_ia)
