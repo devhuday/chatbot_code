@@ -4,6 +4,7 @@ import sett
 import database
 import ia
 import sendemail 
+import history
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
@@ -116,6 +117,9 @@ def administrar_chatbot(text, number, messageId, name):
                 mensaje = "Hola, este es puuto6 un correo enviado automáticamente usando Python.sdgfdgvdfdfvdfvdfvs"
 
                 sendemail.enviar_correo(destinatario, asunto, mensaje)
+                
+                history.historial()
+                
                 answer_ia = answer_ia[:-19]+"presiona Cotizar."
                 print(answer_ia)
                 print(number)
