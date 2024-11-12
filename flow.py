@@ -113,9 +113,9 @@ def administrar_chatbot(text, number, messageId, name):
                 # Ejemplo de uso
                 destinatario = "hudaayy14@gmail.com"
                 asunto = "Agenda cita"
-                mensaje = "Hola, este es un correo enviado automáticamente usando Python.sdgfdgvdfdfvdfvdfvs"
+                mensaje = "Hola, este es puuto6 un correo enviado automáticamente usando Python.sdgfdgvdfdfvdfvdfvs"
 
-                sendemail.send_email(asunto, mensaje)
+                sendemail.enviar_correo(destinatario, asunto, mensaje)
                 answer_ia = answer_ia[:-19]+"presiona Cotizar."
                 print(answer_ia)
                 print(number)
