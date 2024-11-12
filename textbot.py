@@ -11,9 +11,17 @@ cotizacion = {
 
 nameandnumber = {
     "message": """Antes de generar su cotización, por favor proporcione en un solo 
-mensaje su nombre completo, teléfono y correo electrónico.
-Ejemplo: Luis Gómez, 3700892727, luis@gmail.com."""
+mensaje su nombre, teléfono y correo electrónico.
 
+*Ejemplo: Luis Gómez, 3700892727, luis@gmail.com.*"""
+    }
+
+agendar = {
+    "message": """Para poder generar su petición de citación, por favor proporcione en un solo 
+mensaje su nombre, correo electrónico, teléfono y el motivo de su cita.
+
+*Ejemplo: Luis Gómez, luis@gmail.com, 3700892727, mi vivienda tiene una estructura compleja asi 
+que me gustaría agendar una cita para una evaluación personalizada.*"""
     }
 
 cotizacion_grid = {

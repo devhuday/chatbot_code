@@ -4,10 +4,13 @@ import sett
 import database
 import ia
 import sendemail 
+import history
+import eraser
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
     "cotizacion": {"body": bot.nameandnumber["message"]},
+    "agendar cita": {"body": bot.agendar["message"]},
     "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
@@ -67,10 +70,6 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         answer_ia = ia.Request(general_prompt)
         replytextIA = text_Message(number,answer_ia)
         list.append(replytextIA)
-        
-    # Envía la reacción
-    #replyReaction = replyReaction_Message(number, messageId, "🫡")
-    #list.append(replyReaction)
 
     return list
 
@@ -82,6 +81,51 @@ def recorrer(respont, number, text, messageId, conver):
             list = enviar_respuesta(number, text, messageId, response_data, conver)
             continue
     return list
+
+def IAresponse(text, number, messageId, name, conver):
+    list_2 = recorrer(response_IA, number, text, messageId, conver)
+    if list_2 :
+        for item in list_2:
+            enviar_Mensaje_whatsapp(item)
+            time.sleep(1)
+    else:
+        answer_ia = ia.Request(text)
+        print(answer_ia)
+        
+        if "greenglocotiza" in answer_ia:
+            print("x_1")
+            nombre, correo, telefono, comentario, mensaje_limpio= eraser.eraserx(answer_ia)
+            print("x")
+            
+            destinatario, asunto, mensaje, foter = sendemail.loadcorreo(nombre, correo, telefono, comentario)
+            sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
+            enviar_Mensaje_whatsapp(text_Message(number,mensaje_limpio))
+
+        if "cotizar" in answer_ia:
+            print("x2")
+            enviar_Mensaje_whatsapp(text_Message(number,"mensaje_modificado2"))
+            hist = history.historialwrite(name, -4)
+            authorization = history.historialread(hist,"agendar cita 🗓️")
+            
+            if authorization:
+                print("x21")
+                destinatario = "hudaayy14@gmail.com"
+                asunto = "Agenda cita"
+                mensaje = text
+                
+                sendemail.enviar_correo(destinatario, asunto, mensaje)
+                answer_ia = ia.Request(text+" estos son mis dato para agendar una cita con greenglo")
+                enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+            else:
+                print("x22")
+                answer_ia = answer_ia[:-17]+"presiona Cotizar."
+                print(answer_ia)
+                print(number)
+                replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
+                enviar_Mensaje_whatsapp(replyButtonData)
+        else:    
+            enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+        conver.new_message("bot_Greengol",answer_ia)
 
 def administrar_chatbot(text, number, messageId, name):
     text = text.lower()
@@ -102,25 +146,5 @@ def administrar_chatbot(text, number, messageId, name):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        list_2 = recorrer(response_IA, number, text, messageId, conver)
-        if list_2 :
-            for item in list_2:
-                enviar_Mensaje_whatsapp(item)
-                time.sleep(1)
-        else:
-            answer_ia = ia.Request(text)
-            if "cotizar" in answer_ia:
-                # Ejemplo de uso
-                destinatario = "hudaayy14@gmail.com"
-                asunto = "Agenda cita"
-                mensaje = "Hola, este es puuto6 un correo enviado automáticamente usando Python.sdgfdgvdfdfvdfvdfvs"
-
-                sendemail.enviar_correo(destinatario, asunto, mensaje)
-                answer_ia = answer_ia[:-19]+"presiona Cotizar."
-                print(answer_ia)
-                print(number)
-                replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
-                enviar_Mensaje_whatsapp(replyButtonData)
-            else:    
-                enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-                conver.new_message("bot_Greengol",answer_ia)
+        IAresponse(text, number, messageId, name, conver)
+        
