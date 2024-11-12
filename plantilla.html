@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #5c7d14; /* Color de fondo de las partes laterales */
+        display: flex;
+        justify-content: center;
+      }
+      .outer-container {
+        background-color: #5c7d14; /* Color de fondo */
+        padding: 20px 0px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .email-container {
+        max-width: 600px;
+        background-color: #ffffff; /* Color de fondo del centro */
+        padding: 20px;
+        border-radius: 8px; /* Puntas redondeadas */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: auto;
+      }
+      .header,
+      .footer {
+        background-color: #ffffff; /* Color de las partes superiores e inferiores */
+        padding: 10px;
+        border-radius: 8px 8px 0 0; /* Puntas redondeadas superiores */
+      }
+      .footer {
+        border-radius: 0 0 8px 8px; /* Puntas redondeadas inferiores */
+      }
+      .logo {
+        margin-bottom: 20px;
+      }
+      .logo img {
+        width: 150px; /* Aumenta el valor según desees */
+        height: auto; /* Mantiene la proporción del logo */
+      }
+      .header-text {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .subtext {
+        font-size: 16px;
+        color: #666;
+        text-align: start;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer-container">
+      <div class="email-container">
+        <div class="header">
+          <div class="logo">
+            <img
+              src="https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png"
+              alt="Logo de Wonderblum"
+            />
+          </div>
+        </div>
+        <div class="header-text">{nombre}</div>
+        <div class="subtext">{textbody}</div>
+        <div class="footer">
+          <p>{footer}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
