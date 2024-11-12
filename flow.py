@@ -3,7 +3,7 @@ import textbot as bot
 import sett
 import database
 import ia
-from email import *
+import email 
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
@@ -112,10 +112,10 @@ def administrar_chatbot(text, number, messageId, name):
             if "cotizar" in answer_ia:
                 # Ejemplo de uso
                 destinatario = "hudaayy14@gmail.com"
-                asunto = "Asunto del correo"
+                asunto = "Agenda cita"
                 mensaje = "Hola, este es un correo enviado automáticamente usando Python.sdgfdgvdfdfvdfvdfvs"
 
-                enviar_correo(destinatario, asunto, mensaje)
+                email.send_email(asunto, mensaje)
                 answer_ia = answer_ia[:-19]+"presiona Cotizar."
                 print(answer_ia)
                 print(number)
