@@ -89,18 +89,20 @@ def IAresponse(text, number, messageId, name, conver):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
+        print("fdfdf")
         answer_ia = ia.Request(text)
         if "greenglocotiza" in answer_ia:
-            
+            print("greenglocotiza")
             hist = history.historialwrite(name, -1)
+            print(hist[0]["mensajes"][0]["mensaje"])
             nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
             
-            destinatario, asunto, mensaje, footer = sendemail.loadcorreo(nombre, correo, telefono, comentario)
-            sendemail.enviar_correo(destinatario, asunto, mensaje, footer)
+            destinatario, asunto, mensaje, foter = sendemail.loadcorreo(nombre, correo, telefono, comentario)
+            sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
 
-        if "cotizar" in answer_ia:
-            
+        elif "cotizar" in answer_ia:
+            print("ccccccc")
             hist = history.historialwrite(name, -4)
             authorization = history.historialread(hist,"agendar cita 🗓️")
             
@@ -142,5 +144,5 @@ def administrar_chatbot(text, number, messageId, name):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        IAresponse()
+        IAresponse(text, number, messageId, name, conver)
         

@@ -5,9 +5,9 @@ import re
 
 def eraserx(mensaje):
     coincidencias = re.search(
-    r"^(?P<nombre>\w+(?:\s\w+)?)\s.*?(?P<correo>\w+@\w+\.\w+).*?(?P<telefono>\d+)\s(?P<comentario>.+)$", 
+    r"^(?P<nombre>\w+(?:\s\w+)?),?\s.*?(?P<correo>\w+@\w+\.\w+),?\s.*?(?P<telefono>\d+),?\s(?P<comentario>.+)$", 
     mensaje
-    )   
+    )
 
     if coincidencias:
         nombre = coincidencias.group("nombre")
