@@ -91,11 +91,14 @@ def IAresponse(text, number, messageId, name, conver):
     else:
         answer_ia = ia.Request(text)
         if "greenglocotiza" in answer_ia:
-            nombre, correo, telefono, comentario, mensaje_modificado = eraser.eraser(text)
+            
+            hist = history.historialwrite(name, -1)
+            nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
+            
             destinatario, asunto, mensaje, footer = sendemail.loadcorreo(nombre, correo, telefono, comentario)
             sendemail.enviar_correo(destinatario, asunto, mensaje, footer)
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-            pass
+
         if "cotizar" in answer_ia:
             
             hist = history.historialwrite(name, -4)

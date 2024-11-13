@@ -34,3 +34,4 @@ def historialread(resultado, clave):
     print(check) if check else print("No se envia el correo")
 
     return check
+
