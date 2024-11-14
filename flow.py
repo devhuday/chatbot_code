@@ -27,7 +27,9 @@ responses = {
 }
 
 response_IA = {
-    "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid"}
+    "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid","action": "text"},
+    "desconozco estos temas": {"responseIA": "no tengo conociemientos de sistemas off grid, on grid o hibridos, podrias explicarme", "action": "cotizar"}
+    
 }
 
 footer = "Equipo Greenglo"
@@ -71,8 +73,11 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
     if "responseIA" in response_data:
         general_prompt = response_data["responseIA"]
         answer_ia = ia.Request(general_prompt)
-        replytextIA = text_Message(number,answer_ia)
-        list.append(replytextIA)
+        if "cotizar" in response_data["action"]:
+          messagex = buttonReply_Message(number,["Cotizar"], answer_ia, footer, "sed2", messageId)
+        else:
+          messagex = text_Message(number,answer_ia)
+        list.append(messagex)
 
     return list
 
