@@ -27,7 +27,8 @@ responses = {
 }
 
 response_IA = {
-    "no estoy seguro": {"responseIA": "no estoy seguro sobre qué tipo de sistema solar utilizar on grid o off grid"}
+    "no estoy seguro": {"responseIA": "no estoy seguro sobre qué tipo de sistema solar utilizar on grid o off grid"},
+    "Desconozco estos temas": {"responseIA": "Desconozco estos temas de tipos sistema solar on grid, off grid e hibrido"}
 }
 
 footer = "Equipo Greenglo"
