@@ -11,7 +11,7 @@ responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
     "cotizacion": {"body": bot.nameandnumber["message"]},
     "agendar cita": {"body": bot.agendar["message"]},
-    "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"]},
+    "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"], "list": "on"},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
@@ -56,7 +56,10 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
 
     # Envía botones 
     if "options" in response_data:
-        replyButtonData = buttonReply_Message(number, response_data["options"], response_data["question"], footer, "sed1", messageId)
+        if "list" in response_data:
+          replyButtonData = listReply_Message(number, response_data["options"], response_data["question"], footer, "sed1", messageId)
+        else:
+          replyButtonData = buttonReply_Message(number, response_data["options"], response_data["question"], footer, "sed1", messageId)
         conver.new_message("bot_Greengol",response_data["question"])
         list.append(replyButtonData)
     

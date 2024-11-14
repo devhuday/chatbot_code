@@ -6,7 +6,7 @@ welcome = {
 
 cotizacion = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Antes de seguir con la cotizacion necesitamos saber lo siguiente:\n\n *¿Que tipo sistema fotovoltaico tienes en mente implementar?*",
-    "option": ["On Grid", "Off Grid", "Hibrido"]
+    "option": ["Sistema On Grid", "Sistema Off Grid", "Sistema Hibrido", "Desconozco estos temas"]
     }
 
 nameandnumber = {
@@ -18,9 +18,13 @@ mensaje su nombre, teléfono y correo electrónico.
 
 agendar = {
     "message": """Para poder generar su petición de citación, por favor proporcione en un solo mensaje su nombre, correo electrónico, teléfono y el motivo de su cita.
-
+    
 *Ejemplo: Luis Gómez, luis@gmail.com, 3700892727,mi vivienda tiene una estructura compleja asi que me gustaría agendar una cita para una evaluación personalizada.*"""
     }
+
+cotizacion_unknow = {
+    "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación de area y tipo de techo.*"
+    } 
 
 cotizacion_grid = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
@@ -50,8 +54,7 @@ Residencial_coti_menor = {
 
 Residencial_coti_entre = {
     "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
-    "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"],
-    "option2": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
+    "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"]
     } 
 
 Residencial_coti_mayor = {
