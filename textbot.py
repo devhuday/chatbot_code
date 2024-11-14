@@ -27,7 +27,7 @@ cotizacion_unknow = {
     } 
 
 cotizacion_grid = {
-    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
+    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura.\n\n*¿Podrías decirme qué tipo de factura de energía es?* 😊",
     "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
     }
 
