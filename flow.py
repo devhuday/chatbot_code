@@ -127,6 +127,7 @@ def IAresponse(text, number, messageId, name, conver):
                     num = history.historialmessages(hist,"cotizacion")
                     nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][num+2]["mensaje"])
                     conver.new_userinfo(nombre, correo, telefono)
+                    enviar_Mensaje_whatsapp(text_Message(number,"Registrado satisfactoriamente ✅"))
             else:
                 answer_ia = answer_ia[:-17]+"presiona Cotizar."
                 print(answer_ia)
