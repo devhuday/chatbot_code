@@ -13,12 +13,16 @@ class Conversacion:
         self.client = MongoClient(f"mongodb+srv://{credential.user}:{credential.password}@{credential.cluster}.amtem.mongodb.net/{credential.dbname}?retryWrites=true&w=majority")
         self.db = self.client[credential.dbname]
         self.collection = self.db[credential.collect]
-        
+        self.collection_userinfo = self.db[credential.collect]
         
     def check_User(self):
         print("dnqijnd")
         user = self.collection.find_one({"numero_id": self.number})
         return user
+    
+    def check_user_info(self):
+        user_info = self.collection_userinfo.find_one({"usuario":self.username})
+        pass
 
 
     def new_user(self):

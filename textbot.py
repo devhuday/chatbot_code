@@ -37,7 +37,7 @@ cotizacion_offgrid = {
     }
 
 cotizacion_hibrido = {
-    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, debes ser atendido por un asesor. \n\nAntes de que uno de nuestros asesores de Greeglo 💼 te atienda, por favor, cuéntanos un poco sobre tu situación actual y la idea que tienes para el sistema híbrido. \n\n¡Te responderemos lo más pronto posible! ⏰",
+    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, debes ser atendido por un asesor. \n\nAntes de que uno de nuestros asesores de Greeglo 💼 te atienda, por favor, cuéntanos en un mensaje un poco sobre tu idea que tienes para el sistema híbrido.\n*Ej:* Me gustaría un sistema híbrido porque solo quiero alimentar algunas cosas y el excedente de energía lo podría vender. \n\n¡Te responderemos lo más pronto posible! ⏰",
     #"option": ["Ok, gracias"]
     }
 

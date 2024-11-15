@@ -14,7 +14,7 @@ responses = {
     "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"], "list": "on"},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
-    "sistema hibrido": {"question": bot.cotizacion_hibrido["message"]},
+    "sistema hibrido": {"body": bot.cotizacion_hibrido["message"]},
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_costoso["message"]},
@@ -102,7 +102,6 @@ def IAresponse(text, number, messageId, name, conver):
         print("fdfdf")
         answer_ia = ia.Request(text)
         if "greenglocotiza" in answer_ia:
-            print("greenglocotiza")
             hist = history.historialwrite(name, -1)
             print(hist[0]["mensajes"][0]["mensaje"])
             nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
@@ -112,7 +111,6 @@ def IAresponse(text, number, messageId, name, conver):
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
 
         elif "cotizar" in answer_ia:
-            print("ccccccc")
             hist = history.historialwrite(name, -4)
             authorization = history.historialread(hist,"agendar cita 🗓️")
             
@@ -145,6 +143,11 @@ def administrar_chatbot(text, number, messageId, name):
         conver.new_user()
     conver.new_message("usuario",text)   
     
+    if "cotizacion" in text:
+        if conver.check_user_info():
+            text = "cotizar"
+        
+    
     enviar_Mensaje_whatsapp(markRead_Message(messageId))
     time.sleep(1)
     
@@ -154,4 +157,16 @@ def administrar_chatbot(text, number, messageId, name):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        IAresponse(text, number, messageId, name, conver)
+        hist = history.historialwrite(name, -3)
+        authorization = history.historialread(hist,bot.cotizacion_hibrido["message"])
+        if authorization:
+            print("se debe enviar correo")
+            hist = history.historialwrite(name, -1)
+            print(hist[0]["mensajes"][0]["mensaje"])
+            nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
+            
+            destinatario, asunto, mensaje, foter = sendemail.loadcorreo(nombre, correo, telefono, comentario)
+            sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
+            enviar_Mensaje_whatsapp(text_Message(number,"solicitud enviada"))
+        else:
+            IAresponse(text, number, messageId, name, conver)
