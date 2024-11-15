@@ -8,6 +8,12 @@ app = Flask(__name__)
 def  bienvenido():
     return 'Hola mundo'
 
+@app.route("/testing", methods=["POST", "GET"])
+def testing():
+  print("Solicitud de UptimeRobot detectada.")
+  return "Solicitud de monitoreo .", 200
+  
+
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
     try:

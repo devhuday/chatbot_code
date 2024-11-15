@@ -38,12 +38,12 @@ cotizacion_offgrid = {
 
 cotizacion_hibrido = {
     "message": "¡Para acceder a una cotización de un sistema híbrido🔋, necesitaremos que uno de los integrantes del equipo de Greeglo te atienda!💼 ¡Este se comunicara contigo lo más pronto posible! ⏰",
-    "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
+    "option": ["Esperar mensaje", "Contacto directo"]
     }
 
 Residencial = {
     "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno en 1.5 años, una vida útil de más de 25 años, descuento en renta y ¡exento de IVA!  📈💡",
-    #"option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
+    "option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
 Residencial_cotizar = {
