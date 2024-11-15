@@ -11,7 +11,7 @@ def  bienvenido():
 @app.route("/testing", methods=["POST", "GET"])
 def testing():
   print("Solicitud de UptimeRobot detectada.")
-  return "Solicitud de monitoreo .", 200
+  return "recibida", 200
   
 
 @app.route('/webhook', methods=['GET'])

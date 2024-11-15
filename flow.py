@@ -15,6 +15,7 @@ responses = {
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "sistema hibrido": {"question": bot.cotizacion_hibrido["message"], "options": bot.cotizacion_hibrido["option"]},
+    "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_costoso["message"]},
     "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
@@ -75,7 +76,7 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         general_prompt = response_data["responseIA"]
         answer_ia = ia.Request(general_prompt)
         if "cotizar" in response_data["action"]:
-          messagex = buttonReply_Message(number,["Cotizar"], answer_ia, footer, "sed2", messageId)
+          messagex = buttonReply_Message(number,["Cotizar"], f"{answer_ia} Si no tines mas preguntas puedes seguir tu cotizacion presionando el boton", footer, "sed2", messageId)
         else:
           messagex = text_Message(number,answer_ia)
         list.append(messagex)

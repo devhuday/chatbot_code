@@ -1,5 +1,5 @@
 welcome = {
-    "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidaar el medio ambiente.",
+    "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
     "question": "¿Cómo podemos ayudarte hoy?",
     "option": ["Cotizacion ✍️", "Agendar cita 🗓️"]
     }
@@ -32,13 +32,13 @@ cotizacion_grid = {
     }
 
 cotizacion_offgrid = {
-    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura. ¿Podrías decirme qué tipo de factura de energía es? 😊",
-    "option": ["Residencial 🏠", "Comercial 🏢", "Industrial 🏭"]
+    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para proyectos de tipo off grid tenemos un par de ejemplos de posibles cotizaciones para la alimentación de componnetes especificos. 😊",
+    "option": ["proyecto 1 🏠", "proyhecto 2 🏢"]
     }
 
 cotizacion_hibrido = {
-    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, necesitaremos que uno de los integrantes del equipo de Greeglo te atienda!💼 ¡Este se comunicara contigo lo más pronto posible! ⏰",
-    "option": ["Esperar mensaje", "Contacto directo"]
+    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, necesitaremos que uno de los integrantes del equipo de Greeglo te atienda!💼 ¡Este se comunicara contigo lo más pronto posible! ⏰. Pero necesitamos que en el siguinte emnsaje expongas tu situcion y cual es tu idea para implementar el sistema hibrido, para poder darle un mayor contexto al asesor",
+    "option": ["Ok, gracias"]
     }
 
 Residencial = {
