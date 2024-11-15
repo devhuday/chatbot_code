@@ -76,7 +76,7 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         general_prompt = response_data["responseIA"]
         answer_ia = ia.Request(general_prompt)
         if "cotizar" in response_data["action"]:
-          messagex = buttonReply_Message(number,["Cotizar"], f"{answer_ia} Si no tines mas preguntas puedes seguir tu cotizacion presionando el boton", footer, "sed2", messageId)
+          messagex = buttonReply_Message(number,["Cotizar"], f"{answer_ia} \n\n*Puedes seguir tu cotizacion presionando el boton*", footer, "sed2", messageId)
         else:
           messagex = text_Message(number,answer_ia)
         list.append(messagex)
