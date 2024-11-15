@@ -13,7 +13,7 @@ class Conversacion:
         self.client = MongoClient(f"mongodb+srv://{credential.user}:{credential.password}@{credential.cluster}.amtem.mongodb.net/{credential.dbname}?retryWrites=true&w=majority")
         self.db = self.client[credential.dbname]
         self.collection = self.db[credential.collect]
-        self.collection_userinfo = self.db[credential.collect]
+        self.collection_userinfo = self.db[credential.collectinfo]
         
     def check_User(self):
         print("dnqijnd")
@@ -22,7 +22,7 @@ class Conversacion:
     
     def check_user_info(self):
         user_info = self.collection_userinfo.find_one({"usuario":self.username})
-        pass
+        return user_info
 
 
     def new_user(self):
@@ -48,7 +48,7 @@ class Conversacion:
             #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
         }
         
-        newuser = self.collection.insert_one(user)
+        newuser = self.collection_userinfo.insert_one(user)
         return newuser
     
     def new_message(self, usertype, text):
