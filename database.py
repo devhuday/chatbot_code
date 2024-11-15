@@ -34,6 +34,20 @@ class Conversacion:
             "mensajes": []
         }
         
+        new_user_info = self.collection_userinfo.insert_one(user)
+        return new_user_info
+    
+    def new_userinfo(self,name,numberx,correo):
+        user = {
+            "usuario_id": self.username,
+            "numero_id": self.number,
+            "usuario_nombre": name,
+            "usuario_numero": numberx,
+            "usuario_correo": correo,
+            #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
+            #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
+        }
+        
         newuser = self.collection.insert_one(user)
         return newuser
     

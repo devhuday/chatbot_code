@@ -32,12 +32,12 @@ cotizacion_grid = {
     }
 
 cotizacion_offgrid = {
-    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para proyectos de tipo off grid tenemos un par de ejemplos de posibles cotizaciones para la alimentación de componnetes especificos. 😊",
+    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para proyectos de tipo off grid tenemos un par de ejemplos de posibles cotizaciones para la alimentación de componetes especificos como *aires aconficionados o electrodomesticos*. 😊",
     "option": ["proyecto 1 🏠", "proyhecto 2 🏢"]
     }
 
 cotizacion_hibrido = {
-    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, debes ser atendido por un asesor. \n\nAntes de que uno de nuestros asesores de Greeglo 💼 te atienda, por favor, cuéntanos en un mensaje un poco sobre tu idea que tienes para el sistema híbrido.\n*Ej:* Me gustaría un sistema híbrido porque solo quiero alimentar algunas cosas y el excedente de energía lo podría vender. \n\n¡Te responderemos lo más pronto posible! ⏰",
+    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, debes ser atendido por un asesor. \n\nAntes de que uno de nuestros asesores de Greeglo 💼 te atienda, por favor, cuéntanos en un mensaje un poco sobre tu idea que tienes para el sistema híbrido.\n\n*Ej:* Me gustaría un sistema híbrido porque solo quiero alimentar algunas cosas y el excedente de energía lo podría vender. \n\n*¡Te responderemos lo más pronto posible!* ⏰",
     #"option": ["Ok, gracias"]
     }
 

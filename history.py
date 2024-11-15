@@ -35,3 +35,10 @@ def historialread(resultado, clave):
 
     return check
 
+def historialmessages(resultado, clave):
+    i=0
+    for mensaj in resultado[0]["mensajes"]:
+        if mensaj['mensaje'] == clave:
+            return i
+        i+=1
+    

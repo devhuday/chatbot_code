@@ -99,7 +99,6 @@ def IAresponse(text, number, messageId, name, conver):
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        print("fdfdf")
         answer_ia = ia.Request(text)
         if "greenglocotiza" in answer_ia:
             hist = history.historialwrite(name, -1)
@@ -114,8 +113,7 @@ def IAresponse(text, number, messageId, name, conver):
             hist = history.historialwrite(name, -4)
             authorization = history.historialread(hist,"agendar cita 🗓️")
             
-            if authorization:
-                
+            if history.historialread(hist,"agendar cita 🗓️"):
                 destinatario = "hudaayy14@gmail.com"
                 asunto = "Agenda cita"
                 mensaje = text
@@ -123,6 +121,12 @@ def IAresponse(text, number, messageId, name, conver):
                 sendemail.enviar_correo(destinatario, asunto, mensaje)
                 answer_ia = ia.Request(text+" estos son mis dato para agendar una cita con greenglo")
                 enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+            
+            elif history.historialread(hist,"cotizacion"):
+                if not conver.check_user_info():
+                    num = history.historialmessages(hist,"cotizacion")
+                    nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][num+2]["mensaje"])
+                    conver.new_userinfo(nombre, correo, telefono)
             else:
                 answer_ia = answer_ia[:-17]+"presiona Cotizar."
                 print(answer_ia)
