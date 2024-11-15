@@ -14,7 +14,7 @@ responses = {
     "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"], "list": "on"},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
-    "sistema hibrido": {"question": bot.cotizacion_hibrido["message"], "options": bot.cotizacion_hibrido["option"]},
+    "sistema hibrido": {"question": bot.cotizacion_hibrido["message"]},
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_costoso["message"]},
