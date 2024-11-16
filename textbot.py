@@ -1,7 +1,7 @@
 welcome = {
     "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
     "question": "¿Cómo podemos ayudarte hoy?",
-    "option": ["Cotizacion ✍️", "Agendar cita 🗓️"]
+    "option": ["Cotizacion ✍️"]
     }
 
 cotizacion = {
@@ -32,33 +32,35 @@ cotizacion_grid = {
     }
 
 cotizacion_offgrid = {
-    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para proyectos de tipo off grid tenemos un par de ejemplos de posibles cotizaciones para la alimentación de componetes especificos como *aires aconficionados o electrodomesticos*. 😊",
-    "option": ["proyecto 1 🏠", "proyhecto 2 🏢"]
+    "message": "¡Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para sistemas off grid (aislados), tenemos un catálogo de opciones diseñado para alimentar componentes específicos de tu hogar, local o negocio.\n\nTambien pudes observar una cotizacion de un Sistema de aire acondicionado hibrido para darte una idea de lo que te puedes encontar. \n\n😊 *¡Explora nuestras soluciones y encuentra la ideal para ti!*",
+    "option": ["Sistemas aislados", "Aire hibrido solar"]
     }
 
 cotizacion_hibrido = {
-    "message": "¡Para acceder a una cotización de un sistema híbrido🔋, debes ser atendido por un asesor. \n\nAntes de que uno de nuestros asesores de Greeglo 💼 te atienda, por favor, cuéntanos en un mensaje un poco sobre tu idea que tienes para el sistema híbrido.\n\n*Ej:* Me gustaría un sistema híbrido porque solo quiero alimentar algunas cosas y el excedente de energía lo podría vender. \n\n*¡Te responderemos lo más pronto posible!* ⏰",
-    #"option": ["Ok, gracias"]
+    "message": "¡Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para sistemas off grid (aislados), tenemos un catálogo de opciones diseñado para alimentar componentes específicos de tu hogar, local o negocio.\n\nTambien pudes observar una cotizacion de un Sistema de aire acondicionado hibrido para darte una idea de lo que te puedes encontar. \n\n😊 *¡Explora nuestras soluciones y encuentra la ideal para ti!*",
+    "option": ["Sistemas aislados", "Aire hibrido solar"]
+    }
+
+cotizacion_hibrido = {
+    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti en sistemas hibridos, todas equipadas con respaldo de baterias de hasta 6 horas de duración y con la posibilidad de ampliar el numero de horas de autonomia.",
+    "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "option": ["Ahorro hasta 760kwh", "Ahorro hasta 932kwh", "Ahorro hasta 1350kwh"]
     }
 
 Residencial = {
-    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno en 1.5 años, una vida útil de más de 25 años, descuento en renta y ¡exento de IVA!  📈💡",
+    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno de inversión en 1.5 años, vida útil de más de 25 años, descuento hasta el 50% en renta liquida y ¡exento de IVA!.  📈💡",
     "option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
 Residencial_cotizar = {
-    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen, observa tu consumo y responde a la pregunta. ",
-    "question": "*¿En que rango de consumo estas actualmete?*",
-    "option": ["Menor a 1000kwh", "Entre 1000 y 2000Kwh", "Mayor a 2000Kwh"]
-    }   
-
-Residencial_coti_menor = {
-    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hata el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hata el 50% en renta líquida!",
+    "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
     "option": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
     } 
 
-Residencial_coti_entre = {
-    "message": "Tenemos tres opciones para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar el 50% en renta líquida! 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
+Residencial_coti_comercial = {
+    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hata el 50% en renta líquida!",
+    "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
     "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"]
     } 
 
@@ -68,6 +70,10 @@ Residencial_coti_mayor = {
 
 Residencial_coti_pdf = {
     "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación de area y tipo de techo.*"
+    } 
+
+offgrid_pdf = {
+    "message": "¡Listo! 🎉 Ya puedes descargar El PDF y revisar para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. \n\n*Nota: La cotización está sujeta a verificación de area y tipo de techo.*"
     } 
 
 Residencial_coti_costoso = {

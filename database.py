@@ -21,7 +21,7 @@ class Conversacion:
         return user
     
     def check_user_info(self):
-        user_info = self.collection_userinfo.find_one({"usuario":self.username})
+        user_info = self.collection_userinfo.find_one({"numero_id":self.number})
         return user_info
 
 
@@ -34,7 +34,7 @@ class Conversacion:
             "mensajes": []
         }
         
-        new_user_info = self.collection_userinfo.insert_one(user)
+        new_user_info = self.collection.insert_one(user)
         return new_user_info
     
     def new_userinfo(self,name,numberx,correo):
@@ -43,11 +43,11 @@ class Conversacion:
             "numero_id": self.number,
             "usuario_nombre": name,
             "usuario_numero": numberx,
-            "usuario_correo": correo,
+            "usuario_correo": correo
             #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
             #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
         }
-        
+        print("new")
         newuser = self.collection_userinfo.insert_one(user)
         return newuser
     

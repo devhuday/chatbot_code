@@ -6,6 +6,7 @@ import ia
 import sendemail 
 import history
 import eraser
+from unidecode import unidecode
 # Diccionario para almacenar los mensajes
 responses = {
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
@@ -14,16 +15,19 @@ responses = {
     "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"], "list": "on"},
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
-    "sistema hibrido": {"body": bot.cotizacion_hibrido["message"]},
+    "sistema hibrido": {"body": bot.cotizacion_hibrido["message"], "question": bot.cotizacion_hibrido["question"], "options":bot.cotizacion_hibrido["option"], "media": ("consumo", "image")},
+    "sistemas aislados":{"body": bot.offgrid_pdf["message"], "media": ("catalogo", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"]},
+    "aire hibrido solar":{"body": bot.offgrid_pdf["message"], "media": ("aire_solar", "documents"), "question":"¿Estas interesado? Agenda una cita",  "options": ["Agendar cita 🗓️"]},
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
-    "residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
+    #"residencial": {"question": bot.Residencial["message"], "options": bot.Residencial["option"]},
     "me parece costoso": {"body": bot.Residencial_coti_costoso["message"]},
-    "si, deseo cotizar": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
-    "menor a 1000kwh": {"question": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
-    "entre 1000 y 2000kwh": {"question": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
-    "mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
+    "residencial": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
+    "comercial": {"body": bot.Residencial_coti_comercial["message"], "question": bot.Residencial_coti_comercial["question"], "options": bot.Residencial_coti_comercial["option"], "media": ("consumo", "image")},
+    #"menor a 1000kwh": {"question": bot.Residencial_coti_menor["message"], "options": bot.Residencial_coti_menor["option"]},
+    #"entre 1000 y 2000kwh": {"question": bot.Residencial_coti_entre["message"], "options": bot.Residencial_coti_entre["option"]},
+    #"mayor a 2000kwh": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "industrial": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
-    "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents")},
+    "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"]},
     #"informacion": {"question": "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?", "options": ["Sobre nosotros", "Energia solar", "Contacto"]},
     "no, gracias.": {"body": "Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊"}
 }
@@ -48,7 +52,12 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
         if media_category == "documents":
             if "cotizacion_" in media_id:
                 media_id = media_id + text[13:-3]
-            mediax = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], response_data["body"], f"Cotización {text[13:-3]} kwh.pdf")
+                mediax = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], response_data["body"], f"Cotización {text[13:-3]} kwh.pdf")
+            elif "catalogo" in  media_id:
+                mediax = document_Message(number, sett.documents[f"{media_id}"], response_data["body"], f"Catalogo Off grid.pdf")
+            elif "aire_solar" in  media_id:
+                mediax = document_Message(number, sett.documents[f"{media_id}"], response_data["body"], f"Aire solar.pdf")
+            
         list.append(mediax)
         conver.new_message("bot_Greengol",response_data["body"]) 
 
@@ -111,9 +120,9 @@ def IAresponse(text, number, messageId, name, conver):
 
         elif "cotizar" in answer_ia:
             hist = history.historialwrite(name, -4)
-            authorization = history.historialread(hist,"agendar cita 🗓️")
+            authorization = history.historialread(hist,"agendar cita")
             
-            if history.historialread(hist,"agendar cita 🗓️"):
+            if history.historialread(hist,"agendar cita"):
                 destinatario = "hudaayy14@gmail.com"
                 asunto = "Agenda cita"
                 mensaje = text
@@ -123,23 +132,35 @@ def IAresponse(text, number, messageId, name, conver):
                 enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
             
             elif history.historialread(hist,"cotizacion"):
+                print("entra")
                 if not conver.check_user_info():
+                    print("entrax2")
                     num = history.historialmessages(hist,"cotizacion")
+                    print(num)
                     nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][num+2]["mensaje"])
                     conver.new_userinfo(nombre, correo, telefono)
                     enviar_Mensaje_whatsapp(text_Message(number,"Registrado satisfactoriamente ✅"))
+                    conver.new_message("bot_Greengol","Registrado satisfactoriamente ✅") 
+                    answer_ia = answer_ia[:-17]+"presiona Cotizar."
+                    print(answer_ia)
+                    print(number)
+                    replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
+                    enviar_Mensaje_whatsapp(replyButtonData)
             else:
                 answer_ia = answer_ia[:-17]+"presiona Cotizar."
                 print(answer_ia)
                 print(number)
                 replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
                 enviar_Mensaje_whatsapp(replyButtonData)
+        elif "escribe: cotizacion" in answer_ia:
+            answer_ia = answer_ia[:-19]+" presiona Cotizar."
+            replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
         else:    
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-        conver.new_message("bot_Greengol",answer_ia)
+    conver.new_message("bot_Greengol",answer_ia)
 
 def administrar_chatbot(text, number, messageId, name):
-    text = text.lower()
+    text = unidecode(text.lower())
     list = []
     print("mensaje del usuario:", text)
     
