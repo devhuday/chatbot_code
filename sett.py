@@ -31,7 +31,14 @@ documents = {
     "cotizacion_1000": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201000%20Kwh-mes.pdf?v=1730482140026",
     "cotizacion_1300": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201300kwh.pdf?v=1730156408245",
     "cotizacion_1680": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201680kwh.pdf?v=1730482168914",
-    "cotizacion_1980": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201980kwh.pdf?v=1730482185428"
+    "cotizacion_1980": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Ahorro%20hasta%201980kwh.pdf?v=1730482185428",
+    "cotizacion_932": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Sistema%20Hibrido%20de%20%20932kwhmes-%20Respaldo%20500Watt%20x%206horas..pdf?v=1731702867533",
+    "cotizacion_760": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Sistema%20Hibrido%20de%20760kwh%20mes%20Respaldo%20500Watt%20x%206%20horas..pdf?v=1731702862045",
+    "cotizacion_1350": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Sistema%20Fotovoltaico%20Hibrido%20de%209.2Kwp%201350kwhmes-%20Respaldo%20500Watt%20x%206horas.pdf?v=1731710894899",
+    "catalogo": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Catalogos%20de%20Kid%20Aislados.pdf?v=1731702788933",
+    "aire_solar": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Aire%20acondicionado%20Hibrido.pdf?v=1731710114466",
+    "cotizacion_offgrid": ""
+
 }
 
 contact = {

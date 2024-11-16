@@ -21,17 +21,20 @@ def historialwrite(nameuser,step):
 
 def historialread(resultado, clave):
     check = None
-    
+    i = 0
+    """
     for mensaje in resultado[0]["mensajes"]:
+        print(i)
         print(f"Emisor: {mensaje['emisor']}")
         print(f"Mensaje: {mensaje['mensaje']}")
         print(f"Timestamp: {mensaje['timestamp']}")
         print("----------")
+    """
     
     for mensaj in resultado[0]["mensajes"]:
         if mensaj['mensaje'] == clave:
-            check = "se envia el correo"
-    print(check) if check else print("No se envia el correo")
+            check = f"se envia el correo + {clave}" 
+    print(check) if check else print(f"No se envia el correo + {clave}")
 
     return check
 

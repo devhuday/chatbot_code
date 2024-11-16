@@ -37,7 +37,7 @@ def enviar_correo(destinatario, asunto, mensaje, footer):
 
 def loadcorreo(nombre, correo, telefono, comentario):
     # Ejemplo de uso
-    destinatario = "hudaayy14@gmail.com"
+    destinatario = "ventasbot@greenglo.com.co"
     asunto = "Petición reunion Greenglo"
     footer = "<b>Equipo Greenglo S.A.S.</b> "
 
