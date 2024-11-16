@@ -11,21 +11,27 @@ from unidecode import unidecode
 responses = {
     #1 pagina
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
+  
     #pagina de registro
     "cotizacion": {"body": bot.nameandnumber["message"]},
+    
     #2 pagina
     "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"], "list": "on"},
+    
     #3 pagina
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "sistema hibrido": {"body": bot.cotizacion_hibrido["message"], "question": bot.cotizacion_hibrido["question"], "options":bot.cotizacion_hibrido["option"], "media": ("consumo", "image")},
+    
     #4 pagina on-grid
     "residencial": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
     "comercial": {"body": bot.Residencial_coti_comercial["message"], "question": bot.Residencial_coti_comercial["question"], "options": bot.Residencial_coti_comercial["option"], "media": ("consumo", "image")},
     "industrial": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
+    
     #4 pagina off-grid
     "sistemas aislados":{"body": bot.offgrid_pdf["message"], "media": ("catalogo", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"]},
     "aire hibrido solar":{"body": bot.offgrid_pdf["message"], "media": ("aire_solar", "documents"), "question":"¿Estas interesado? Agenda una cita",  "options": ["Agendar cita 🗓️"]},
+  
     #4 pagina hibrido y 5 on-grid
     "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"]},
 
@@ -111,19 +117,26 @@ def IAresponse(text, number, messageId, name, conver):
             time.sleep(1)
     else:
         answer_ia = ia.Request(text)
+        step = 6
+        hist = history.historialwrite(name, -(step))
         if "greenglocotiza" in answer_ia:
-            hist = history.historialwrite(name, -1)
-            print(hist[0]["mensajes"][0]["mensaje"])
-            nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
-            
-            destinatario, asunto, mensaje, foter = sendemail.loadcorreo(nombre, correo, telefono, comentario)
-            sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
-            enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+            #hist = history.historialwrite(name, -1)
+            if history.historialread(hist,"agendar cita "):
+              messageUs = hist[0]["mensajes"][step-1]["mensaje"]
+              print(messageUs)
+              comentario = messageUs
+              nombre, correo, telefono = history.user_info(number)
+              print(nombre, correo, telefono)
+              destinatario,asunto,mensaje,foter = sendemail.loadcorreox(nombre,correo,telefono,comentario)
+              print("cargado")
+              sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
+              answer_ia = "Solicitud enviada ✅"
+              enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
 
         elif "cotizar" in answer_ia:
-            hist = history.historialwrite(name, -5)
-            
-            if history.historialread(hist,"agendar cita"):
+            hist = history.historialwrite(name, -6)
+            print("tiene cotizar")
+            if history.historialread(hist,"agendar cita "):
                 destinatario = "hudaayy14@gmail.com"
                 asunto = "Agenda cita"
                 mensaje = text
@@ -132,18 +145,18 @@ def IAresponse(text, number, messageId, name, conver):
                 answer_ia = ia.Request(text+" estos son mis dato para agendar una cita con greenglo")
                 enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
             
-            elif history.historialread(hist,"cotizacion"):
+            elif history.historialread(hist,"cotizacion "):
                 print("entra")
                 if not conver.check_user_info():
                     print("entrax2")
-                    num = history.historialmessages(hist,"cotizacion")
+                    num = history.historialmessages(hist,"cotizacion ")
                     print(num)
-                    print(hist[0]["mensajes"][0]["mensaje"])
-                    nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
+                    print(hist[0]["mensajes"][4]["mensaje"])
+                    nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][4]["mensaje"])
                     conver.new_userinfo(nombre, telefono, correo)
-                    enviar_Mensaje_whatsapp(text_Message(number,"Registrado satisfactoriamente ✅"))
-                    conver.new_message("bot_Greengol","Registrado satisfactoriamente ✅") 
-                    answer_ia = answer_ia[:-17]+"presiona Cotizar."
+                    #enviar_Mensaje_whatsapp(text_Message(number,"Registrado satisfactoriamente ✅"))
+                    #conver.new_message("bot_Greengol","Registrado satisfactoriamente ✅") 
+                    answer_ia = "Registrado satisfactoriamente ✅\n\n"+answer_ia[:-17]+"presiona Cotizar."
                     print(answer_ia)
                     print(number)
                     replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)

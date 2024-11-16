@@ -35,13 +35,13 @@ def enviar_correo(destinatario, asunto, mensaje, footer):
     print("Correo enviado exitosamente a", destinatario)
 
 
-def loadcorreo(nombre, correo, telefono, comentario):
+def loadcorreox(nombre, correo, telefono, comentario):
     # Ejemplo de uso
-    #destinatario = "ventasbot@greenglo.com.co"
-    destinatario = "hudaayy14@gmail.com"
+    destinatario = "ventasbot@greenglo.com.co"
+    #destinatario = "hudaayy14@gmail.com"
     asunto = "Petición reunion Greenglo"
     footer = "<b>Equipo Greenglo S.A.S.</b> "
-
+    print("bien")
     encargado = "Heiner"
 
     mensaje = f""" <br><br>¡Hola {encargado}!<br>

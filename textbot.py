@@ -17,9 +17,9 @@ mensaje su nombre, teléfono y correo electrónico.
     }
 
 agendar = {
-    "message": """Para poder generar su petición de citación, por favor proporcione en un solo mensaje su nombre, correo electrónico, teléfono y el motivo de su cita.
+    "message": """Para poder generar su petición de citación, por favor proporcione en un solo mensaje el motivo de su cita para ofrecerle un mayor contexto al asesor.
     
-*Ejemplo: Luis Gómez, luis@gmail.com, 3700892727,mi vivienda tiene una estructura compleja asi que me gustaría agendar una cita para una evaluación personalizada.*"""
+*Ejemplo: me interesa las ofertas que me estan dando pero mi vivienda tiene una estructura compleja asi que me gustaría agendar una cita para una evaluación personalizada.*"""
     }
 
 
@@ -46,7 +46,7 @@ Residencial_cotizar = {
     } 
 
 Residencial_coti_comercial = {
-    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hata el 50% en renta líquida!",
+    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hasta el 50% en renta líquida!",
     "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
     "option": ["Ahorro hasta 1300kwh", "Ahorro hasta 1680kwh", "Ahorro hasta 1980kwh"]
     } 
