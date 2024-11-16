@@ -55,7 +55,7 @@ def alerta():
     
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(alerta, "interval", minutes=3)
+scheduler.add_job(alerta, "interval", hours=48)
 scheduler.start()
 
 if __name__ == '__main__':
