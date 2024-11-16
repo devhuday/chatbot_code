@@ -22,9 +22,6 @@ agendar = {
 *Ejemplo: Luis Gómez, luis@gmail.com, 3700892727,mi vivienda tiene una estructura compleja asi que me gustaría agendar una cita para una evaluación personalizada.*"""
     }
 
-cotizacion_unknow = {
-    "message": "¡Listo! 🎉 Ya puedes descargar tu cotización y revisarla para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. *Nota: La cotización está sujeta a verificación de area y tipo de techo.*"
-    } 
 
 cotizacion_grid = {
     "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para ayudarte a reducir tu consumo de energía, necesito saber un poco más sobre tu factura.\n\n*¿Podrías decirme qué tipo de factura de energía es?* 😊",
@@ -37,19 +34,9 @@ cotizacion_offgrid = {
     }
 
 cotizacion_hibrido = {
-    "message": "¡Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Para sistemas off grid (aislados), tenemos un catálogo de opciones diseñado para alimentar componentes específicos de tu hogar, local o negocio.\n\nTambien pudes observar una cotizacion de un Sistema de aire acondicionado hibrido para darte una idea de lo que te puedes encontar. \n\n😊 *¡Explora nuestras soluciones y encuentra la ideal para ti!*",
-    "option": ["Sistemas aislados", "Aire hibrido solar"]
-    }
-
-cotizacion_hibrido = {
     "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti en sistemas hibridos, todas equipadas con respaldo de baterias de hasta 6 horas de duración y con la posibilidad de ampliar el numero de horas de autonomia.",
     "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
     "option": ["Ahorro hasta 760kwh", "Ahorro hasta 932kwh", "Ahorro hasta 1350kwh"]
-    }
-
-Residencial = {
-    "message": "Queremos que aproveches al máximo la energía solar. La inversión mínima en este tipo de proyectos es de $20 millones de pesos, con un retorno de inversión en 1.5 años, vida útil de más de 25 años, descuento hasta el 50% en renta liquida y ¡exento de IVA!.  📈💡",
-    "option": ["Si, deseo cotizar", "Me parece costoso", "No deseo cotizar"]
     }
 
 Residencial_cotizar = {
