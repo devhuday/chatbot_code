@@ -152,9 +152,10 @@ def IAresponse(text, number, messageId, name, conver):
                 print(number)
                 replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
                 enviar_Mensaje_whatsapp(replyButtonData)
-        elif "escribe: cotizacion" in answer_ia:
-            answer_ia = answer_ia[:-19]+" presiona Cotizar."
+        elif "cotizacion" in answer_ia or "cotización" in answer_ia:
+            answer_ia = answer_ia[:-20]+" presiona Cotizar."
             replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
+            enviar_Mensaje_whatsapp(replyButtonData)
         else:    
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
     conver.new_message("bot_Greengol",answer_ia)
