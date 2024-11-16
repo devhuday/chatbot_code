@@ -51,6 +51,8 @@ class Conversacion:
         newuser = self.collection_userinfo.insert_one(user)
         return newuser
     
+    
+    
     def new_message(self, usertype, text):
         
         filtro = {

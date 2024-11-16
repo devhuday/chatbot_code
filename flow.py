@@ -31,7 +31,7 @@ responses = {
 
     
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
-    "agendar cita": {"body": bot.agendar["message"]},
+    "agendar cita": {"body": bot.agendar["message"]}
 }
 
 response_IA = {
@@ -121,7 +121,7 @@ def IAresponse(text, number, messageId, name, conver):
             enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
 
         elif "cotizar" in answer_ia:
-            hist = history.historialwrite(name, -4)
+            hist = history.historialwrite(name, -5)
             
             if history.historialread(hist,"agendar cita"):
                 destinatario = "hudaayy14@gmail.com"
@@ -138,8 +138,9 @@ def IAresponse(text, number, messageId, name, conver):
                     print("entrax2")
                     num = history.historialmessages(hist,"cotizacion")
                     print(num)
-                    nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][num+2]["mensaje"])
-                    conver.new_userinfo(nombre, correo, telefono)
+                    print(hist[0]["mensajes"][0]["mensaje"])
+                    nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
+                    conver.new_userinfo(nombre, telefono, correo)
                     enviar_Mensaje_whatsapp(text_Message(number,"Registrado satisfactoriamente ✅"))
                     conver.new_message("bot_Greengol","Registrado satisfactoriamente ✅") 
                     answer_ia = answer_ia[:-17]+"presiona Cotizar."
