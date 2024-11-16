@@ -68,9 +68,13 @@ def user_info(number):
             'numero': resultado[0].get("usuario_numero", "No disponible"),
             'nombre': resultado[0].get("usuario_nombre", "No disponible") 
         }
+        correo = resultado[0].get("usuario_correo", 'No disponible')
+        telefono = resultado[0].get("usuario_numero", "No disponible")
+        nombre = resultado[0].get("usuario_nombre", "No disponible") 
+        
     else:
         InfoUser = None   
-    return InfoUser
+    return nombre, correo, telefono
 
 def historialmessages(resultado, clave):
     i=0
