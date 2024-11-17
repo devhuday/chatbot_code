@@ -1,5 +1,5 @@
 welcome = {
-    "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greengol, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
+    "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greenglo, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
     "question": "¿Cómo podemos ayudarte hoy?",
     "option": ["Cotizacion ✍️"]
     }
@@ -17,9 +17,9 @@ mensaje su nombre, teléfono y correo electrónico.
     }
 
 agendar = {
-    "message": """Para poder generar su petición de citación, por favor proporcione en un solo mensaje el motivo de su cita para ofrecerle un mayor contexto al asesor.
+    "message": """Para poder generar su petición de citación, por favor proporcione en un solo mensaje la siguiente informacion: El numero de NIC asociado a su factura de energia y El motivo de la visita para ofrecerle un mayor contexto al asesor.
     
-*Ejemplo: me interesa las ofertas que me estan dando pero mi vivienda tiene una estructura compleja asi que me gustaría agendar una cita para una evaluación personalizada.*"""
+*Ejemplo: 7787497, Me interesa las ofertas que me estan dando pero mi vivienda tiene una estructura compleja asi que me gustaría agendar una cita para una evaluación personalizada.*"""
     }
 
 
@@ -40,7 +40,7 @@ cotizacion_hibrido = {
     }
 
 Residencial_cotizar = {
-    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hata el 50% en renta líquida!",
+    "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegun tu consumo actual escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hasta el 50% en renta líquida!",
     "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
     "option": ["Ahorro hasta 360kwh", "Ahorro hasta 700kwh", "Ahorro hasta 1000kwh"]
     } 
@@ -61,17 +61,6 @@ Residencial_coti_pdf = {
 
 offgrid_pdf = {
     "message": "¡Listo! 🎉 Ya puedes descargar El PDF y revisar para ver si se ajusta a tu presupuesto. Si tienes alguna otra pregunta o necesitas ajustar algo, aquí estoy para ayudarte. \n\n*Nota: La cotización está sujeta a verificación de area y tipo de techo.*"
-    } 
-
-Residencial_coti_costoso = {
-    "message": """Entiendo que el costo de 20 millones para el sistema solar puede 
-parecer alto. Sin embargo, te puedo presentar otras opciones. Una 
-opción puede ser considerar un sistema solar *off grid*, estos no 
-estan conectados a la red eléctrica. 
-
-Este tipo de sistema puede ser más económico ya que no requiere la
-conexión a la red eléctrica por lo que puede ser diseñado para 
-cubrir necesidades energéticas de elementos específicos. """
     } 
  
 Residencial_coti_negativa = {

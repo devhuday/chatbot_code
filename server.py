@@ -2,6 +2,8 @@ from flask import Flask, request
 import sett 
 import services
 import flow
+from apscheduler.schedulers.background import BackgroundScheduler
+import alertUser
 app = Flask(__name__)
 
 @app.route('/bienvenido', methods=['GET'])
@@ -47,6 +49,14 @@ def recibir_mensajes():
 
     except Exception as e:
         return 'no enviado ' + str(e)
+
+def alerta():
+    alertUser.alert()
+    
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(alerta, "interval", hours=48)
+scheduler.start()
 
 if __name__ == '__main__':
     app.run()

@@ -22,7 +22,8 @@ stickers = {
 
 image = {
     "welcome": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/logogreenglo.png?v=1730406512788",
-    "consumo": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Imagen%20de%20WhatsApp%202024-10-31%20a%20las%2022.38.03_9ae83d26.jpg?v=1730432649562"
+    "consumo": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Imagen%20de%20WhatsApp%202024-10-31%20a%20las%2022.38.03_9ae83d26.jpg?v=1730432649562",
+    "nic": "https://cdn.glitch.global/849c2391-579c-4589-a30c-f1c6c14339d8/Imagen%20de%20WhatsApp%202024-11-16%20a%20las%2016.20.12_320d9915.jpg?v=1731792103796"
 }
 
 documents = {

@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 EMAIL_USER = "botgreenglo@gmail.com"
 EMAIL_PASSWORD = "iamo tirh hudn naav"
 
-def enviar_correo(destinatario, asunto, mensaje, footer):
+def enviar_correo(destinatario, asunto, mensaje, footer, numero):
     # Configuración del servidor SMTP de Gmail
     servidor = smtplib.SMTP('smtp.gmail.com', 587)
     servidor.starttls()
@@ -24,6 +24,7 @@ def enviar_correo(destinatario, asunto, mensaje, footer):
         plantilla_html = archivo.read()
     plantilla_html = plantilla_html.replace("{nombre}", asunto)
     plantilla_html = plantilla_html.replace("{textbody}", mensaje)
+    plantilla_html = plantilla_html.replace("{telefono}", numero)
     plantilla_html = plantilla_html.replace("{footer}", footer)
     # Adjuntar la plantilla HTML al correo
     msg.attach(MIMEText(plantilla_html, 'html'))
@@ -37,8 +38,8 @@ def enviar_correo(destinatario, asunto, mensaje, footer):
 
 def loadcorreox(nombre, correo, telefono, comentario):
     # Ejemplo de uso
-    destinatario = "ventasbot@greenglo.com.co"
-    #destinatario = "hudaayy14@gmail.com"
+    #destinatario = "ventasbot@greenglo.com.co"
+    destinatario = "hudaayy14@gmail.com"
     asunto = "Petición reunion Greenglo"
     footer = "<b>Equipo Greenglo S.A.S.</b> "
     print("bien")
