@@ -8,7 +8,7 @@ import history
 import eraser
 from unidecode import unidecode
 # Diccionario para almacenar los mensajes
-responses = {
+RESPONSES = {
     #1 pagina
     "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
   
@@ -37,178 +37,139 @@ responses = {
 
     
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
-    "agendar cita": {"body": bot.agendar["message"]}
+    "agendar cita": {"body": bot.agendar["message"], "media": ("nic", "image")}
 }
 
-response_IA = {
+RESPONSE_IA = {
     "no estoy seguro": {"responseIA": "no estoy seguro sobre que tipo de sistema solar utilizar on grid o off grid","action": "text"},
     "desconozco estos temas": {"responseIA": "no tengo conociemientos de sistemas off grid, on grid o hibridos, podrias explicarme", "action": "cotizar"}
     
 }
 
-footer = "Equipo Greenglo"
+FOOTER = "Equipo Greenglo"
+
+
 
 def enviar_respuesta(number, text, messageId, response_data, conver):
-    list = []
-    print(response_data)
-    
-    # Envía la imagen 
+    lista_respuestas = []
+
     if "media" in response_data:
         media_id, media_category = response_data["media"]
-        if media_category == "image":
-            mediax = image_Message(number, get_media_id(media_id, media_category), response_data["body"])
-        if media_category == "documents":
-            if "cotizacion_" in media_id:
-                media_id = media_id + text[13:-3]
-                mediax = document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], response_data["body"], f"Cotización {text[13:-3]} kwh.pdf")
-            elif "catalogo" in  media_id:
-                mediax = document_Message(number, sett.documents[f"{media_id}"], response_data["body"], f"Catalogo Off grid.pdf")
-            elif "aire_solar" in  media_id:
-                mediax = document_Message(number, sett.documents[f"{media_id}"], response_data["body"], f"Aire solar.pdf")
-            
-        list.append(mediax)
-        conver.new_message("bot_Greengol",response_data["body"]) 
+        lista_respuestas.append(enviar_media(number, media_id, media_category, response_data, text))
+        conver.new_message("bot_Greengol", response_data.get("body", ""))
 
-    # Envía el texto
-    if "body" in response_data and not ("media" in response_data):
-        replytext = text_Message(number, response_data["body"])
-        conver.new_message("bot_Greengol",response_data["body"]) 
-        list.append(replytext)
+    if "body" in response_data and "media" not in response_data:
+        lista_respuestas.append(text_Message(number, response_data["body"]))
+        conver.new_message("bot_Greengol", response_data["body"])
 
-    # Envía botones 
     if "options" in response_data:
-        if "list" in response_data:
-          replyButtonData = listReply_Message(number, response_data["options"], response_data["question"], footer, "sed1", messageId)
-        else:
-          replyButtonData = buttonReply_Message(number, response_data["options"], response_data["question"], footer, "sed1", messageId)
-        conver.new_message("bot_Greengol",response_data["question"])
-        list.append(replyButtonData)
-    
+        reply = generar_botones(number, response_data, messageId)
+        lista_respuestas.append(reply)
+        conver.new_message("bot_Greengol", response_data["question"])
+
     if "contact" in response_data:
         name_id, number_id = response_data["contact"]
-        replycontact = contact_Message(number,sett.contact[name_id],sett.contact[number_id])
-        list.append(replycontact)
-    
+        lista_respuestas.append(contact_Message(number, sett.contact[name_id], sett.contact[number_id]))
+
     if "responseIA" in response_data:
-        general_prompt = response_data["responseIA"]
-        answer_ia = ia.Request(general_prompt)
-        if "cotizar" in response_data["action"]:
-          messagex = buttonReply_Message(number,["Cotizar"], f"{answer_ia} \n\n*Puedes seguir tu cotizacion presionando el boton*", footer, "sed2", messageId)
-        else:
-          messagex = text_Message(number,answer_ia)
-        list.append(messagex)
+        lista_respuestas.append(procesar_ia(number, text, response_data, messageId))
 
-    return list
+    return lista_respuestas
 
-def recorrer(respont, number, text, messageId, conver):
-    list = None
-    for keyword in respont:
+
+def enviar_media(number, media_id, media_category, response_data, text):
+    if media_category == "image":
+        return image_Message(number, get_media_id(media_id, media_category), response_data["body"])
+    if media_category == "documents":
+        if "cotizacion_" in media_id:
+            return document_Message(number, sett.documents[f"cotizacion_{text[13:-3]}"], response_data["body"], f"Cotización {text[13:-3]} kwh.pdf")
+        return document_Message(number, sett.documents[media_id], response_data["body"], f"{media_id.capitalize().replace('_', ' ')}.pdf")
+
+
+def generar_botones(number, response_data, messageId):
+    if "list" in response_data:
+        return listReply_Message(number, response_data["options"], response_data["question"], FOOTER, "sed1", messageId)
+    return buttonReply_Message(number, response_data["options"], response_data["question"], FOOTER, "sed1", messageId)
+
+
+def procesar_ia(number, text, response_data, messageId):
+    respuesta_ia = ia.Request(response_data["responseIA"])
+    if response_data.get("action") == "cotizar":
+        return buttonReply_Message(number, ["Cotizar"], f"{respuesta_ia}\n\n*Puedes seguir tu cotización presionando el botón*", FOOTER, "sed2", messageId)
+    return text_Message(number, respuesta_ia)
+
+
+def recorrer(responses_dict, number, text, messageId, conver):
+    for keyword, response_data in responses_dict.items():
         if keyword in text:
-            response_data = respont[keyword]
-            list = enviar_respuesta(number, text, messageId, response_data, conver)
-            continue
-    return list
+            return enviar_respuesta(number, text, messageId, response_data, conver)
+    return None
+
 
 def IAresponse(text, number, messageId, name, conver):
-    list_2 = recorrer(response_IA, number, text, messageId, conver)
-    if list_2 :
-        for item in list_2:
+    list_ia = recorrer(RESPONSE_IA, number, text, messageId, conver)
+    if list_ia:
+        for item in list_ia:
             enviar_Mensaje_whatsapp(item)
             time.sleep(1)
     else:
-        answer_ia = ia.Request(text)
-        step = 6
-        hist = history.historialwrite(name, -(step))
-        if "greenglocotiza" in answer_ia:
-            #hist = history.historialwrite(name, -1)
-            if history.historialread(hist,"agendar cita "):
-              messageUs = hist[0]["mensajes"][step-1]["mensaje"]
-              print(messageUs)
-              comentario = messageUs
-              nombre, correo, telefono = history.user_info(number)
-              print(nombre, correo, telefono)
-              destinatario,asunto,mensaje,foter = sendemail.loadcorreox(nombre,correo,telefono,comentario)
-              print("cargado")
-              sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
-              answer_ia = "Solicitud enviada ✅"
-              enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
+        procesar_respuesta_general(text, number, messageId, name, conver)
 
-        elif "cotizar" in answer_ia:
-            hist = history.historialwrite(name, -6)
-            print("tiene cotizar")
-            if history.historialread(hist,"agendar cita "):
-                destinatario = "hudaayy14@gmail.com"
-                asunto = "Agenda cita"
-                mensaje = text
-                
-                sendemail.enviar_correo(destinatario, asunto, mensaje)
-                answer_ia = ia.Request(text+" estos son mis dato para agendar una cita con greenglo")
-                enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-            
-            elif history.historialread(hist,"cotizacion "):
-                print("entra")
-                if not conver.check_user_info():
-                    print("entrax2")
-                    num = history.historialmessages(hist,"cotizacion ")
-                    print(num)
-                    print(hist[0]["mensajes"][4]["mensaje"])
-                    nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][4]["mensaje"])
-                    conver.new_userinfo(nombre, telefono, correo)
-                    #enviar_Mensaje_whatsapp(text_Message(number,"Registrado satisfactoriamente ✅"))
-                    #conver.new_message("bot_Greengol","Registrado satisfactoriamente ✅") 
-                    answer_ia = "Registrado satisfactoriamente ✅\n\n"+answer_ia[:-17]+"presiona Cotizar."
-                    print(answer_ia)
-                    print(number)
-                    replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
-                    enviar_Mensaje_whatsapp(replyButtonData)
-            else:
-                answer_ia = answer_ia[:-17]+"presiona Cotizar."
-                print(answer_ia)
-                print(number)
-                replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
-                enviar_Mensaje_whatsapp(replyButtonData)
-        elif "cotizacion" in answer_ia or "cotización" in answer_ia:
-            answer_ia = answer_ia[:-20]+" presiona Cotizar."
-            replyButtonData = buttonReply_Message(number, ["Cotizar"], answer_ia, footer, "sed1", messageId)
-            enviar_Mensaje_whatsapp(replyButtonData)
-        else:    
-            enviar_Mensaje_whatsapp(text_Message(number,answer_ia))
-    conver.new_message("bot_Greengol",answer_ia)
+def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
+  step = 6
+  hist = history.historialwrite(name, -(step))
+  reference = hist[0]["mensajes"][step-2]["mensaje"]
+  if "greenglo visita" in respuesta_ia or (reference in bot.agendar["message"] and "cotizacion" in respuesta_ia):
+     
+    if history.historialread(hist,"agendar cita "):
+      messageUs = hist[0]["mensajes"][step-1]["mensaje"]
+      
+      nombre, correo, telefono = history.user_info(number)
+      destinatario,asunto,mensaje,foter = sendemail.loadcorreox(nombre,correo,telefono,messageUs)
+      sendemail.enviar_correo(destinatario, asunto, mensaje, foter, number)
+      
+      soli_env = "Solicitud enviada ✅\n\n"
+      respuesta_ia = soli_env+respuesta_ia[0:-15] if "greenglo visita" in respuesta_ia else soli_env+respuesta_ia[0:-31]
+      return buttonReply_Message(number, ["Volver a cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  
+  elif  ": cotizacion" in respuesta_ia:
+    respuesta_ia = respuesta_ia[0:-20]+" Presiona el boton"
+    return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  
+  elif ": registro" in respuesta_ia:
+      nombre, correo, telefono, comentario = eraser.eraserx(text)
+      user=conver.new_userinfo(nombre, telefono, correo)
+      print(user)
+      respuesta_ia = f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[0:-17]}presiona El boton."
+      return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+
+def procesar_respuesta_general(text, number, messageId, name, conver):
+    respuesta_ia = ia.Request(text)
+    formatIA, respuestaIA = verificar_ia(text, respuesta_ia, number, name,messageId, conver)
+    conver.new_message("bot_Greengol", respuestaIA)
+    enviar_Mensaje_whatsapp(formatIA)
+
 
 def administrar_chatbot(text, number, messageId, name):
     text = unidecode(text.lower())
-    list = []
-    print("mensaje del usuario:", text)
-    
-    conver = database.Conversacion(number,messageId,name)
+    conver = database.Conversacion(number, messageId, name)
+
     if not conver.check_User():
         conver.new_user()
-    conver.new_message("usuario",text)   
-    
-    if "cotizacion" in text:
-        if conver.check_user_info():
-            text = "cotizar"
-        
+    conver.new_message("usuario", text)
+
+    if "cotizacion" in text and conver.check_user_info():
+        text = "cotizar"
+    elif "cotizar" in text and not conver.check_user_info():
+        text = "cotizacion"
     
     enviar_Mensaje_whatsapp(markRead_Message(messageId))
     time.sleep(1)
-    
-    list = recorrer(responses,number, text, messageId, conver)
-    if list :        
-        for item in list:
-            enviar_Mensaje_whatsapp(item)
+
+    lista_respuestas = recorrer(RESPONSES, number, text, messageId, conver)
+    if lista_respuestas:
+        for respuesta in lista_respuestas:
+            enviar_Mensaje_whatsapp(respuesta)
             time.sleep(1)
     else:
-        hist = history.historialwrite(name, -3)
-        authorization = history.historialread(hist,bot.cotizacion_hibrido["message"])
-        if authorization:
-            print("se debe enviar correo")
-            hist = history.historialwrite(name, -1)
-            print(hist[0]["mensajes"][0]["mensaje"])
-            nombre, correo, telefono, comentario = eraser.eraserx(hist[0]["mensajes"][0]["mensaje"])
-            
-            destinatario, asunto, mensaje, foter = sendemail.loadcorreo(nombre, correo, telefono, comentario)
-            sendemail.enviar_correo(destinatario, asunto, mensaje, foter)
-            enviar_Mensaje_whatsapp(text_Message(number,"solicitud enviada"))
-        else:
-            IAresponse(text, number, messageId, name, conver)
+        IAresponse(text, number, messageId, name, conver)

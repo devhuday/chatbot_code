@@ -51,8 +51,32 @@
       }
       .subtext {
         font-size: 16px;
-        color: #666;
+        color: #6c757d;
         text-align: start;
+      }
+      .contact-button {
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #4caf50; /* Color verdoso */
+        color: #ffffff !important;
+        border: none;
+        border-radius: 20px; /* Bordes redondeados */
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .contact-button:link,
+      .contact-button:visited,
+      .contact-button:hover,
+      .contact-button:active {
+        color: #ffffff; /* Asegura que las letras sean blancas en todos los estados */
+        text-decoration: none; /* Evita el subrayado */
+      }
+
+      .contact-button:hover {
+        background-color: #9EDF9C; /* Color al pasar el cursor */
       }
     </style>
   </head>
@@ -69,6 +93,16 @@
         </div>
         <div class="header-text">{nombre}</div>
         <div class="subtext">{textbody}</div>
+
+        <!-- Botón para hablar al cliente -->
+        <a
+          href="https://wa.me/{telefono}"
+          class="contact-button"
+          target="_blank"
+        >
+          Hablar al Cliente
+        </a>
+
         <div class="footer">
           <p>{footer}</p>
         </div>
