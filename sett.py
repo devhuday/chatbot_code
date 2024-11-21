@@ -1,8 +1,8 @@
 token = 'greengol'
 
-whatsapp_token = 'EAAGEqN6VSOoBO0NZCynYpEloL9YcQ2IU8pgNpSg5ZBAX6Nhtq4SxMc0ncd4CQsxkoFXjYqhYyAex4PZCNFrJH0VMyX51BSFfPE6mgUFzvrKhWlJJs1i9GdquRvP8gMFXbjY7wE4LfQec7oy8CptIaXeaMn4RPvGZCPM9G4ecnduaDQgHSOoZC5TqfEWONUdI7AgZDZD'
+whatsapp_token = 'EAAMZCZBdv7NN8BO63xtt1zYKO4Vh3xIYdDXPqemYeVJ9rnvZA1kMLvKvvEE8mXoO67vFp9ILC28pNvZBQ2U96gPCBjGZCC6U60cQgFkwFGSc3ZBVRdZBwDcuJ3Kf8dwNu9ZApIcqJ2mGHMXSiwYoZAI9VZC2FzO7hozhUdlfqEXlX8Byo6fwhdCrMMzGF07uAGwJIzDQZDZD'
 
-whatsapp_url = 'https://graph.facebook.com/v21.0/401657476373844/messages'
+whatsapp_url = 'https://graph.facebook.com/v21.0/418280141359732/messages'
 
 stickers = {
     "poyo_feliz": 984778742532668,

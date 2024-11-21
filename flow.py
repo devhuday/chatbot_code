@@ -1,3 +1,4 @@
+
 from services import *
 import textbot as bot
 import sett
@@ -7,6 +8,7 @@ import sendemail
 import history
 import eraser
 from unidecode import unidecode
+
 # Diccionario para almacenar los mensajes
 RESPONSES = {
     #1 pagina
@@ -140,8 +142,20 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
       nombre, correo, telefono, comentario = eraser.eraserx(text)
       user=conver.new_userinfo(nombre, telefono, correo)
       print(user)
-      respuesta_ia = f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[0:-17]}presiona El boton."
+      respuesta_ia = f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[0:-18]}presiona El boton."
       return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  
+  elif  "agendarbot" in respuesta_ia:
+    respuesta_ia = respuesta_ia[0:-7]+" Presionando el boton"
+    return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  
+  elif  "greengloduda" in respuesta_ia:
+    respuesta_ia = respuesta_ia[0:-12]
+    return text_Message(number, respuesta_ia), respuesta_ia
+  
+  elif  "cotigreenglo" in respuesta_ia:
+      respuesta_ia = respuesta_ia[0:-11]+" Presionando el boton"
+      return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia  
 
 def procesar_respuesta_general(text, number, messageId, name, conver):
     respuesta_ia = ia.Request(text)
