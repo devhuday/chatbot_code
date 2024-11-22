@@ -1,17 +1,20 @@
 welcome = {
-    "message": "¡Hola! 😊 ¡Bienvenido a Greenglo  S.A.S.! 🌤️ Nos alegra que estés aquí. En Greenglo, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
+    "message": "¡Hola! 😊\n\n*¡Bienvenido a Greenglo  S.A.S!* 🌤️\n\nNos alegra que estés aquí. En Greenglo, nos apasiona ayudarte a reducir tu consumo de energía y a cuidar el medio ambiente.",
     "question": "¿Cómo podemos ayudarte hoy?",
-    "option": ["Cotizacion ✍️"]
+    "option": ["Cotizacion ✍️", "Mantenimiento 🔧"]
+    }
+
+mantenimientoMens = {
+    "message": "¡Hola! 😊 Gracias por contactarte con *Greengol S.A.S.*\n\nEntendido, deseas agendar una cita para el mantenimiento de una sistema solar con nosotros. Por favor, indícame en un mensaje el motivo de la cita:\n\n*por ejemplo:* Revisión del inversor, mi inversor ha estado comportandose de manera estraña\n\nCon esta información, confirmaremos la disponibilidad y te notificaremos pronto. 🌞🔧."
     }
 
 cotizacion = {
-    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S*! ☀️ Antes de seguir con la cotizacion necesitamos saber lo siguiente:\n\n *¿Que tipo sistema fotovoltaico tienes en mente implementar?*",
+    "message": "Gracias por tu interés en proyectos solares con *Greenglo S.A.S! ☀️ Antes de seguir con la cotizacion necesitamos saber lo siguiente:\n\n *¿Que tipo sistema fotovoltaico tienes en mente implementar?*",
     "option": ["Sistema On Grid", "Sistema Off Grid", "Sistema Hibrido", "Desconozco estos temas"]
     }
 
 nameandnumber = {
-    "message": """Antes de generar su cotización, por favor proporcione en un solo 
-mensaje su nombre, teléfono y correo electrónico.
+    "message": """Antes de seguir su proceso con *Greenglo S.A.S*, por favor necesito que proporcione en un solo mensaje su *nombre, teléfono y correo electrónico.*\n\nEsta informacion sera usada para mejorar su comunicación con el asesor. 
 
 *Ejemplo: Luis Gómez, 3700892727, luis@gmail.com.*"""
     }
@@ -66,3 +69,11 @@ offgrid_pdf = {
 Residencial_coti_negativa = {
      "message": "Entiendo, si decides no cotizar en este momento.\n\n Si en algún momento cambias de opinión o tienes alguna otra pregunta, no dudes en contactarnos."
     }
+
+Notype = { 
+  "message" : "Lo lamento pero solo puedo leer mensajes de texto 😥. \n\nPero si quieres obtener una cotizacion para tus planes de energia solar no lo pienses dos veces y presiona el boton. 😊🌿"
+}
+
+Nomessage = {
+  "message" : "¿Te interesa generar una cotización para tus planes de energía solar? 🤔 ¡Nosotros te podemos ayudar!\n\nSolo necesitas 5 minutos para calcular y cotizar gratis tu proyecto de energía solar a medida. ⏱️"
+}

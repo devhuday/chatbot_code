@@ -12,14 +12,16 @@ from unidecode import unidecode
 # Diccionario para almacenar los mensajes
 RESPONSES = {
     #1 pagina
-    "hola": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
+    "holax": {"body": bot.welcome["message"], "question": bot.welcome["question"], "options": bot.welcome["option"], "media": ("welcome", "image")},
   
     #pagina de registro
     "cotizacion": {"body": bot.nameandnumber["message"]},
+    "mantenimiento": {"body": bot.nameandnumber["message"]},
     
     #2 pagina
     "cotizar": {"question": bot.cotizacion["message"], "options": bot.cotizacion["option"], "list": "on"},
-    
+    "citaManteni": {"body": bot.mantenimientoMens["message"]},
+  
     #3 pagina
     "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
     "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
@@ -48,7 +50,7 @@ RESPONSE_IA = {
     
 }
 
-FOOTER = "Equipo Greenglo"
+FOOTER = ""
 
 
 
@@ -120,6 +122,7 @@ def IAresponse(text, number, messageId, name, conver):
 def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
   step = 6
   hist = history.historialwrite(name, -(step))
+  botoninf = "\n\n*Si quieres Iniciar una cotización presiona el boton.*"
   reference = hist[0]["mensajes"][step-2]["mensaje"]
   if "greenglo visita" in respuesta_ia or (reference in bot.agendar["message"] and "cotizacion" in respuesta_ia):
      
@@ -134,28 +137,45 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
       respuesta_ia = soli_env+respuesta_ia[0:-15] if "greenglo visita" in respuesta_ia else soli_env+respuesta_ia[0:-31]
       return buttonReply_Message(number, ["Volver a cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
   
-  elif  ": cotizacion" in respuesta_ia:
-    respuesta_ia = respuesta_ia[0:-20]+" Presiona el boton"
-    return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  #elif ": cotizacion" in respuesta_ia:
+    #respuesta_ia = respuesta_ia[0:-20]+" Presiona el boton"
+    #return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
   
-  elif ": registro" in respuesta_ia:
+  elif "registrogreen" in respuesta_ia:
       nombre, correo, telefono, comentario = eraser.eraserx(text)
       user=conver.new_userinfo(nombre, telefono, correo)
       print(user)
-      respuesta_ia = f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[0:-18]}presiona El boton."
+      respuesta_ia = f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[0:-13]}{botoninf}"
       return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
   
-  elif  "agendarbot" in respuesta_ia:
+  elif "agendarbot" in respuesta_ia:
     respuesta_ia = respuesta_ia[0:-7]+" Presionando el boton"
     return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
   
-  elif  "greengloduda" in respuesta_ia:
+  elif "greengloduda" in respuesta_ia:
     respuesta_ia = respuesta_ia[0:-12]
     return text_Message(number, respuesta_ia), respuesta_ia
   
-  elif  "cotigreenglo" in respuesta_ia:
-      respuesta_ia = respuesta_ia[0:-11]+" Presionando el boton"
-      return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia  
+  elif "cotigreenglo" in respuesta_ia:
+      respuesta_ia = respuesta_ia[0:-12]+ botoninf
+      return buttonReply_Message(number, ["Cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  
+  elif "greenInforma" in respuesta_ia:
+      respuesta_ia = respuesta_ia[0:-12] + botoninf
+      return buttonReply_Message(number, bot.welcome["option"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+
+  elif "greenhola" in respuesta_ia:
+      respuesta_ia = respuesta_ia[0:-9] + "\n\n*Si quieres Iniciar una cotización o otro servicio presiona el boton.*"
+      return buttonReply_Message(number,["Iniciar ✅"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+  
+  elif "asesorgreen" in respuesta_ia:
+      respuesta_ia = respuesta_ia[0:-11] + "\n\n*Para agendar una cita Presiona el boton.*"
+      return buttonReply_Message(number,["Agendar cita 🗓️"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+    
+  else:
+    respuesta_ia = bot.Nomessage["message"]
+    return buttonReply_Message(number, bot.welcome["option"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+
 
 def procesar_respuesta_general(text, number, messageId, name, conver):
     respuesta_ia = ia.Request(text)
@@ -165,25 +185,34 @@ def procesar_respuesta_general(text, number, messageId, name, conver):
 
 
 def administrar_chatbot(text, number, messageId, name):
+    if text == "Iniciar ✅":
+      text = "Holax"
     text = unidecode(text.lower())
     conver = database.Conversacion(number, messageId, name)
-
+    print(f"-{text}-")
     if not conver.check_User():
         conver.new_user()
     conver.new_message("usuario", text)
 
     if "cotizacion" in text and conver.check_user_info():
         text = "cotizar"
+        
     elif "cotizar" in text and not conver.check_user_info():
         text = "cotizacion"
     
+    if "mantenimiento " == text and conver.check_user_info():
+        text = "citaManteni"
+      
     enviar_Mensaje_whatsapp(markRead_Message(messageId))
     time.sleep(1)
 
     lista_respuestas = recorrer(RESPONSES, number, text, messageId, conver)
-    if lista_respuestas:
+    if "mensaje no procesado" not in text:
+      if lista_respuestas:
         for respuesta in lista_respuestas:
             enviar_Mensaje_whatsapp(respuesta)
             time.sleep(1)
+      else:
+          IAresponse(text, number, messageId, name, conver)
     else:
-        IAresponse(text, number, messageId, name, conver)
+      enviar_Mensaje_whatsapp(buttonReply_Message(number, bot.welcome["option"], bot.Notype["message"], FOOTER, "sed1", messageId))
