@@ -128,7 +128,7 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
         
         soli_env = "Solicitud enviada ✅\n\n"
         return (
-            buttonReply_Message(number, ["Volver a cotizar"], soli_env + tipo_solicitud, FOOTER, "sed1", messageId),
+            buttonReply_Message(number, ["Volver al inicio ✅"], soli_env + tipo_solicitud, FOOTER, "sed1", messageId),
             soli_env + tipo_solicitud,
         )
 
@@ -193,7 +193,7 @@ def procesar_respuesta_general(text, number, messageId, name, conver):
 
 
 def administrar_chatbot(text, number, messageId, name):
-    if text in ["iniciar ✅", "volver al inicio ✅"]: 
+    if text in ["Iniciar ✅", "Volver al inicio ✅"]: 
         text = "Holax"
     
     text = unidecode(text.lower())
@@ -203,9 +203,9 @@ def administrar_chatbot(text, number, messageId, name):
         conver.new_user()
     conver.new_message("usuario", text)
 
-    if "cotizacion" in text: 
+    if "cotizacion " in text: 
         text = "cotizar" if conver.check_user_info() else "cotizacion" 
-    elif "mantenimiento" == text and conver.check_user_info(): 
+    elif "mantenimiento " == text and conver.check_user_info(): 
         text = "citaManteni"
       
     enviar_Mensaje_whatsapp(markRead_Message(messageId))
