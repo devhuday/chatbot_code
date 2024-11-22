@@ -33,7 +33,7 @@ def verificar_token():
 def recibir_mensajes():
     try:
         body = request.get_json()
-        #print(body)
+        print(f"Se recibe:\n {body}")
         entry = body['entry'][0]
         changes = entry['changes'][0]
         value = changes['value']
@@ -42,8 +42,9 @@ def recibir_mensajes():
         messageId = message['id']
         contacts = value['contacts'][0]
         name = contacts['profile']['name']
+        #type = message['type']
+        print(type)
         text = services.obtener_Mensaje_whatsapp(message)
-
         flow.administrar_chatbot(text, number,messageId,name)
         return 'enviado'
 
