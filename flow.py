@@ -125,7 +125,16 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
   botoninf = "\n\n*Si quieres Iniciar una cotización presiona el boton.*"
   reference = hist[0]["mensajes"][step-2]["mensaje"]
   if "greenglo visita" in respuesta_ia or (reference in bot.agendar["message"] and "cotizacion" in respuesta_ia):
-     
+         
+    if  history.historialread(hist,"mantenimiento "):
+        nombre, correo, telefono = history.user_info(number)
+        destinatario,asunto,mensaje,foter = sendemail.loadcorreox(nombre,correo,telefono,messageUs)
+        sendemail.enviar_correo(destinatario, asunto, mensaje, foter, number)
+      
+        soli_env = "Solicitud enviada ✅\n\n"
+        respuesta_ia = "Un asesor de greenglo se estara comunicando con usted lo mas pronto posible." 
+        return buttonReply_Message(number, ["Volver a cotizar"], respuesta_ia, FOOTER, "sed1", messageId), respuesta_ia
+    
     if history.historialread(hist,"agendar cita "):
       messageUs = hist[0]["mensajes"][step-1]["mensaje"]
       
@@ -186,7 +195,9 @@ def procesar_respuesta_general(text, number, messageId, name, conver):
 
 def administrar_chatbot(text, number, messageId, name):
     if text == "Iniciar ✅":
-      text = "Holax"
+        text = "Holax"
+    elif text == "volver al inicio ✅":
+        text = "Holax"
     text = unidecode(text.lower())
     conver = database.Conversacion(number, messageId, name)
     print(f"-{text}-")
