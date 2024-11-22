@@ -132,13 +132,20 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
             soli_env + tipo_solicitud,
         )
 
-    botoninf = "\n\n*Si quieres Iniciar una cotización presiona el botón.*"
+    botoninf = "\n\n*Si quieres continuar presiona el botón.*"
     hist = history.historialwrite(name, -6)
     
     # Casos específicos de respuesta IA
     acciones_ia = {
         "registrogreen": lambda: (
-            buttonReply_Message(number, ["Cotizar"], f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[:-13]}{botoninf}", FOOTER, "sed1", messageId),
+            buttonReply_Message(
+                number,
+                ["Mantenimiento 🔧"] if history.historialread(hist, "mantenimiento ") else ["Cotizar"] ,
+                f"Fue registrado satisfactoriamente ✅\n\n{respuesta_ia[:-13]}{botoninf}",
+                FOOTER,
+                "sed1",
+                messageId
+                ),
             respuesta_ia
         ),
         "agendarbot": lambda: (
