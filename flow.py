@@ -8,6 +8,8 @@ import sendemail
 import history
 import eraser
 from unidecode import unidecode
+from apscheduler.schedulers.background import BackgroundScheduler
+from datetime import datetime, timedelta
 
 # Diccionario para almacenar los mensajes
 RESPONSES = {
@@ -33,11 +35,11 @@ RESPONSES = {
     "industrial": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     
     #4 pagina off-grid
-    "sistemas aislados":{"body": bot.offgrid_pdf["message"], "media": ("catalogo", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"]},
-    "aire hibrido solar":{"body": bot.offgrid_pdf["message"], "media": ("aire_solar", "documents"), "question":"¿Estas interesado? Agenda una cita",  "options": ["Agendar cita 🗓️"]},
+    "sistemas aislados":{"body": bot.offgrid_pdf["message"], "media": ("catalogo", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"], "alerta": "on"},
+    "aire hibrido solar":{"body": bot.offgrid_pdf["message"], "media": ("aire_solar", "documents"), "question":"¿Estas interesado? Agenda una cita",  "options": ["Agendar cita 🗓️"], "alerta": "on"},
   
     #4 pagina hibrido y 5 on-grid
-    "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"]},
+    "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents"), "question":"¿Estas interesado? Agenda una cita", "options": ["Agendar cita 🗓️"], "alerta": "on"},
 
     
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
@@ -52,6 +54,9 @@ RESPONSE_IA = {
 
 FOOTER = ""
 
+def alertaCita(number,messageId):
+      alertt = buttonReply_Message(number, ["Agendar cita 🗓️"], f"¿Sigues interesado en nuestos servicios? Presiona el botón", FOOTER, "sed1", messageId)
+      enviar_Mensaje_whatsapp(alertt)
 
 
 def enviar_respuesta(number, text, messageId, response_data, conver):
@@ -74,6 +79,13 @@ def enviar_respuesta(number, text, messageId, response_data, conver):
     if "contact" in response_data:
         name_id, number_id = response_data["contact"]
         lista_respuestas.append(contact_Message(number, sett.contact[name_id], sett.contact[number_id]))
+        
+    if "alerta" in response_data:
+        scheduler = BackgroundScheduler()
+        ejecucion_fecha = datetime.now() + timedelta(minutes=1)
+        scheduler.add_job(alertaCita, "date", run_date=ejecucion_fecha, args=[number,messageId])
+        scheduler.start()
+        
 
     if "responseIA" in response_data:
         lista_respuestas.append(procesar_ia(number, text, response_data, messageId))
@@ -133,8 +145,9 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
         )
 
     botoninf = "\n\n*Si quieres continuar presiona el botón.*"
+    print(botoninf)
     hist = history.historialwrite(name, -6)
-    
+    print(botoninf)
     # Casos específicos de respuesta IA
     acciones_ia = {
         "registrogreen": lambda: (
@@ -175,13 +188,15 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
     }
 
     # Lógica para manejar casos específicos
-    if "greenglo visita" in respuesta_ia or (hist[0]["mensajes"][-2]["mensaje"] in bot.agendar["message"] and "cotizacion" in respuesta_ia):
-        if history.historialread(hist, "mantenimiento "):
-            return enviar_solicitud(hist, "Un asesor de greenglo se estará comunicando con usted lo más pronto posible.")
-        if history.historialread(hist, "agendar cita "):
-            tipo_respuesta = respuesta_ia[:-15] if "greenglo visita" in respuesta_ia else respuesta_ia[:-31]
-            return enviar_solicitud(hist, tipo_respuesta)
-    
+    messageAnt = hist[0]["mensajes"][-2]["mensaje"]
+    if messageAnt:
+      if "greenglo visita" in respuesta_ia or (messageAnt in bot.agendar["message"] and "cotizacion" in respuesta_ia):
+          if history.historialread(hist, "mantenimiento "):
+              return enviar_solicitud(hist, "Un asesor de greenglo se estará comunicando con usted lo más pronto posible.")
+          if history.historialread(hist, "agendar cita "):
+              tipo_respuesta = respuesta_ia[:-15] if "greenglo visita" in respuesta_ia else respuesta_ia[:-31]
+              return enviar_solicitud(hist, tipo_respuesta)
+    print("paso")
     # Lógica basada en claves de respuesta IA
     for key, action in acciones_ia.items():
         if key in respuesta_ia:
@@ -205,11 +220,12 @@ def administrar_chatbot(text, number, messageId, name):
     
     text = unidecode(text.lower())
     conver = database.Conversacion(number, messageId, name)
-
+    
     if not conver.check_User():
         conver.new_user()
+        conver.new_message("usuario", "Nuevo usuario ingreso")
     conver.new_message("usuario", text)
-
+    
     if "cotizacion " in text: 
         text = "cotizar" if conver.check_user_info() else "cotizacion" 
     elif "mantenimiento " == text and conver.check_user_info(): 

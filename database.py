@@ -14,6 +14,7 @@ class Conversacion:
         self.db = self.client[credential.dbname]
         self.collection = self.db[credential.collect]
         self.collection_userinfo = self.db[credential.collectinfo]
+        self.collection_userAlarm = self.db[credential.collectAlarm]
         
     def check_User(self):
         print("dnqijnd")
@@ -51,7 +52,16 @@ class Conversacion:
         newuser = self.collection_userinfo.insert_one(user)
         return newuser
     
-    
+    def new_alarm(self,name,numberx,correo):
+        user = {
+            "usuario_id": self.username,
+            "numero_id": self.number,
+            #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
+            #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
+        }
+        print("newAlarm")
+        newuser = self.collection_userAlarm.insert_one(user)
+        return newuser
     
     def new_message(self, usertype, text):
         
