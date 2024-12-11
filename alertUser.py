@@ -13,12 +13,29 @@ class Alerts:
         self.collection = self.db[collect]
         self.collection_userAlarm = self.db[credential.collectAlarm]
 
+    def procesar_time(self, timestamp):
+        if isinstance(timestamp, str):
+            try:
+                return datetime.datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+            except ValueError:
+                print("El formato de la cadena no es válido:", timestamp)
+                return None
+        elif isinstance(timestamp, dict) and "$date" in timestamp:
+            try:
+                return datetime.datetime.fromisoformat(timestamp["$date"].replace("Z", "+00:00"))
+            except ValueError:
+                print("El formato en el campo '$date' no es válido:", timestamp)
+                return None
+        else:
+            print("El valor de timestamp no es válido:", timestamp)
+            return None
+    
     def message(self,numero_id):
         answer = "¿Sigues interesado en realizar tu proyecto fotovoltaico con Greenglo? Te podriamos mostrar otras opciones que se ajusten a tu presupuesto, presiona Cotizar."
         replyButtonData = buttonReply_Message(numero_id, ["Cotizar"], answer, "Equipo Greenglo", "sed1", None)
         enviar_Mensaje_whatsapp(replyButtonData)
         
-    def alert(self):
+    def alertGeneral(self):
         # Obtener todos los números
         numeros = [doc.get("numero_id", "No encontrado") for doc in self.collection.find()]
 
@@ -28,10 +45,10 @@ class Alerts:
             time = mensajes[-1]["timestamp"] 
             if not any("Solicitud enviada ✅" in mensaje.get("mensaje", "") for mensaje in mensajes):
                 if time:
-                    time = time if isinstance(time, datetime.datetime) else time["$date"]
-                    time = datetime.datetime.fromisoformat(time.replace("Z", "+00:00"))
-                current_time = datetime.datetime.now(datetime.timezone.utc)
-                delta_24_hours = datetime.timedelta(minutes=1)
+                    time = self.procesar_time(time)
+                if time:
+                    current_time = datetime.datetime.now(datetime.timezone.utc)
+                    delta_24_hours = datetime.timedelta(minutes=1)
 
                 if (current_time - time) > delta_24_hours:
                     self.message(numero_id)

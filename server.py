@@ -53,20 +53,21 @@ def recibir_mensajes():
 
 def alerta3min():
     alertaMin = alertUser.Alerts()
-    alertaMin.alert()
+    alertaMin.check_and_process_recordatory()
 
 def alerta24hours():
     alertaHour = alertUser.Alerts()
-    alertaHour.alert()
+    alertaHour.alertGeneral()
     
 def iniciar_scheduler():
     scheduler = BackgroundScheduler()
     # alerta cada 1 minuto
-    scheduler.add_job(alerta3min, "interval", minutes=1)
+    scheduler.add_job(alerta3min, "interval", minutes=2)
     # alerta cada 48 horas
     scheduler.add_job(alerta24hours, "interval", minutes=1)
     scheduler.start()
 
  
 if __name__ == '__main__':
+    scheduler = BackgroundScheduler()
     app.run()
