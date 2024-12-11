@@ -17,7 +17,6 @@ class Conversacion:
         self.collection_userAlarm = self.db[credential.collectAlarm]
         
     def check_User(self):
-        print("dnqijnd")
         user = self.collection.find_one({"numero_id": self.number})
         return user
     
@@ -25,19 +24,16 @@ class Conversacion:
         user_info = self.collection_userinfo.find_one({"numero_id":self.number})
         return user_info
 
-
     def new_user(self):
         user = {
             "usuario_id": self.username,
             "numero_id": self.number,
-            #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
-            #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
+            "fecha_ingreso": datetime.datetime.now(datetime.timezone.utc),
             "mensajes": []
         }
-        
         new_user_info = self.collection.insert_one(user)
         return new_user_info
-    
+
     def new_userinfo(self,name,numberx,correo):
         user = {
             "usuario_id": self.username,
@@ -45,25 +41,30 @@ class Conversacion:
             "usuario_nombre": name,
             "usuario_numero": numberx,
             "usuario_correo": correo
-            #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
-            #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
         }
-        print("new")
         newuser = self.collection_userinfo.insert_one(user)
         return newuser
     
-    def new_alarm(self,name,numberx,correo):
+    def new_alarm(self,name,numberx):
         user = {
-            "usuario_id": self.username,
-            "numero_id": self.number,
+            "usuario_id": name, 
+            "numero_id": numberx,
             "fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
         }
-        print("newAlarm")
         newuser = self.collection_userAlarm.insert_one(user)
         return newuser
     
+    def delete_alarm(self, name, numberx):
+        filter_query = {
+            "usuario_id": name,
+            "numero_id": numberx
+        }
+        # Eliminar el documento
+        result = self.collection_userAlarm.delete_one(filter_query)
+        return result.deleted_count  
+    
     def new_message(self, usertype, text):
-        
+
         filtro = {
             "usuario_id": self.username,
             "numero_id": self.number

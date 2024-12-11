@@ -57,13 +57,6 @@ RESPONSE_IA = {
 
 FOOTER = ""
 
-def alertaCita(number,messageId,name):
-      hist = history.historialwrite(name, -6)
-      messageAnt = hist[0]["mensajes"][-1]["mensaje"] 
-      if messageAnt == bot.credito["message"]:
-        alertt = buttonReply_Message(number, ["Agendar cita 🗓️"], f"¿Sigues interesado en nuestos servicios? Presiona el botón y podras agendar una cita con uno asesor.", FOOTER, "sed1", messageId)
-        enviar_Mensaje_whatsapp(alertt)
-
 
 def enviar_respuesta(number, text, messageId, response_data, conver, name):
     lista_respuestas = []
@@ -91,13 +84,7 @@ def enviar_respuesta(number, text, messageId, response_data, conver, name):
         lista_respuestas.append(contact_Message(number, sett.contact[name_id], sett.contact[number_id]))
         
     if "alerta" in response_data:
-        """
-          scheduler = BackgroundScheduler()
-        ejecucion_fecha = datetime.now() + timedelta(minutes=3)
-        scheduler.add_job(alertaCita, "date", run_date=ejecucion_fecha, args=[number,messageId,name])
-        scheduler.start()
-          
-        """
+        conver.new_alarm(number,name)
         
         
 

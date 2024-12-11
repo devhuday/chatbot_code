@@ -51,13 +51,22 @@ def recibir_mensajes():
     except Exception as e:
         return 'no enviado ' + str(e)
 
-def alerta():
-    alertUser.alert()
+def alerta3min():
+    alertaMin = alertUser.Alerts()
+    alertaMin.alert()
+
+def alerta24hours():
+    alertaHour = alertUser.Alerts()
+    alertaHour.alert()
     
+def iniciar_scheduler():
+    scheduler = BackgroundScheduler()
+    # alerta cada 1 minuto
+    scheduler.add_job(alerta3min, "interval", minutes=1)
+    # alerta cada 48 horas
+    scheduler.add_job(alerta24hours, "interval", hours=1)
+    scheduler.start()
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(alerta, "interval", hours=48)
-scheduler.start()
-
+ 
 if __name__ == '__main__':
     app.run()
