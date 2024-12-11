@@ -44,13 +44,13 @@ class Alerts:
         alarms = self.collection_userAlarm.find()
         for alarm in alarms:
             fecha_inicio = alarm.get("fecha_inicio")
-            if fecha_inicio and (current_time - fecha_inicio).total_seconds() > 180:
+            if fecha_inicio and (current_time - fecha_inicio).total_seconds() > 120:
                 # Extraer los datos necesarios
                 usuario_id = alarm.get("usuario_id")
                 numero_id = alarm.get("numero_id")
                 
-                # Realizar la acción (puedes reemplazar esto con tu lógica específica)
-                print(f"Procesando alarma de usuario: {usuario_id}, número: {numero_id}")
+                alertt = buttonReply_Message(numero_id, ["Agendar cita 🗓️"], f"{usuario_id}¿Sigues interesado en nuestos servicios? Presiona el botón y podras agendar una cita con uno asesor.", FOOTER, "sed1", messageId)
+                enviar_Mensaje_whatsapp(alertt)
                 
                 # Eliminar el documento
                 self.collection_userAlarm.delete_one({"_id": alarm["_id"]})
