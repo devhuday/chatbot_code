@@ -7,15 +7,15 @@ from services import *
 def alert():
     client = MongoClient(f"mongodb+srv://{user}:{password}@{cluster}.amtem.mongodb.net/{dbname}?retryWrites=true&w=majority")
     db = client[dbname]
-    collect = db[collect]
+    collection = db[collect]
 
     # Obtener todos los números
-    numeros = [doc.get("numero_id", "No encontrado") for doc in collect.find()]
+    numeros = [doc.get("numero_id", "No encontrado") for doc in collection.find()]
 
     # Mostrar la lista de números
     print(numeros)
 
-    for doc in collect.find():
+    for doc in collection.find():
         usuario_id = doc.get("usuario_id", "Sin usuario")
         numero_id = doc.get("numero_id", "Sin número")
         mensajes = doc.get("mensajes", [])

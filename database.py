@@ -56,8 +56,7 @@ class Conversacion:
         user = {
             "usuario_id": self.username,
             "numero_id": self.number,
-            #"fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
-            #"fecha_fin": datetime.datetime.now(datetime.timezone.utc) ,
+            "fecha_inicio": datetime.datetime.now(datetime.timezone.utc),
         }
         print("newAlarm")
         newuser = self.collection_userAlarm.insert_one(user)

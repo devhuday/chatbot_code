@@ -5,7 +5,11 @@ welcome = {
 }
 
 mantenimientoMens = {
-    "message": "¡Hola! 😊 Gracias por contactarte con *Greenglo S.A.S.*\n\nEntendido, deseas agendar una cita para el mantenimiento de un sistema solar con nosotros. Por favor, indícame en un mensaje el motivo de la cita:\n\n*Por ejemplo:* Revisión del inversor, mi inversor ha estado comportándose de manera extraña.\n\nCon esta información, confirmaremos la disponibilidad y te notificaremos pronto. 🌞🔧."
+    "message": "¡Hola! 😊 Gracias por contactarte con *Greenglo S.A.S.*\n\nEntendido, deseas agendar una cita para el mantenimiento de un sistema solar con nosotros. Por favor, indícame en un mensaje tu direccion y el motivo de la cita. Con esta información, confirmaremos la disponibilidad y te notificaremos pronto. 🌞🔧.:\n\n*ej: (santa marta, calle 35a #74-15, sector gaira), mi inversor ha estado comportándose de manera extraña.*"
+}
+
+panel = {
+    "message": "¡Hola! 😊 Gracias por contactarte con *Greenglo S.A.S.*\n\nEntendido, deseas agendar una cotizacion para la compra de modulos solares con nosotros. Por favor, *indícame en un mensaje la cantidad y el vatiaje de los paneles, ademas de alguna anotacion extra que quieras hacer*. Con esta información, confirmaremos la disponibilidad y te contactaremos pronto. 🌞🔧.:\n\n*ej: quiero 6 paneles de 200w, para reemplazar los que tengo instalado en mi casa.*"
 }
 
 cotizacion = {
@@ -20,9 +24,9 @@ nameandnumber = {
 }
 
 agendar = {
-    "message": """Para poder generar tu petición de citación, por favor proporciona en un solo mensaje la siguiente información: el número de NIC asociado a tu factura de energía y el motivo de la visita para ofrecerle un mayor contexto al asesor.
+    "message": """Para poder generar tu petición de citación, por favor proporciona en un solo mensaje la siguiente información: el número de NIC asociado a tu factura de energía, tu direccion y el motivo de la visita para ofrecerle un mayor contexto al asesor.
     
-*Ejemplo: 7787497, Me interesan las ofertas que me están dando, pero mi vivienda tiene una estructura compleja, así que me gustaría agendar una cita para una evaluación personalizada.*"""
+*Ejemplo: 7787497, (santa marta, calle 35a #74-15, sector gaira), Me interesan las ofertas que me están dando, pero mi vivienda tiene una estructura compleja, así que me gustaría agendar una cita para una evaluación personalizada.*"""
 }
 
 cotizacion_grid = {
@@ -44,13 +48,13 @@ cotizacion_hibrido = {
 Residencial_cotizar = {
     "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegún tu consumo actual, escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hasta el 50% en renta líquida!",
     "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
-    "option": ["Ahorro hasta 360kWh", "Ahorro hasta 700kWh", "Ahorro hasta 1000kWh"]
+    "option": ["Ahorro hasta 650kWh", "Ahorro hasta 1000kWh", "Ahorro hasta 1300kWh"]
 }
 
 Residencial_coti_comercial = {
     "message": "Listo, ahora revisa tu última factura de energía como lo muestra la imagen.\n\nSegún tu consumo actual, escoge una de estas tres opciones que tenemos para ti, todas con beneficios tributarios respaldados por ley: ¡puedes descontar hasta el 50% en renta líquida!",
     "question": " 📉 *¿Cuál de estas opciones te gustaría conocer mejor?*",
-    "option": ["Ahorro hasta 1300kWh", "Ahorro hasta 1680kWh", "Ahorro hasta 1980kWh"]
+    "option": ["Ahorro hasta 1800kWh", "Ahorro hasta 2500kWh", "Ahorro hasta 3200kWh"]
 }
 
 Residencial_coti_mayor = {
@@ -75,4 +79,15 @@ Notype = {
 
 Nomessage = {
     "message": "¿Te interesa generar una cotización para tus planes de energía solar? 🤔 ¡Nosotros te podemos ayudar!\n\nSolo necesitas 5 minutos para calcular y cotizar gratis tu proyecto de energía solar a medida. ⏱️"
+}
+
+credito = {
+    "message": """*Importante*\n\n*Tenemos  alianza con SUFI que ofrece excelentes condiciones de crédito*.
+- Tasa de interés mensual del 1.17%
+- Incluye seguro de vida
+- Disponible en la costa Caribe, Antioquia y Cundinamarca
+- Financiamiento de hasta el 95% del valor del proyecto
+- Plazos fijos de 48, 60 y 72 meses con tasa fija para estabilidad en tus pagos
+- Opciones de pago: plan tradicional o periodo de gracia de 3 meses (pagando solo intereses y cargos adicionales)
+- Proyectos desde los 27 millones.\n*Te gustaría continuar y te actualizar la cotización del sistema e iniciamos el proceso con Sufi.*"""
 }
