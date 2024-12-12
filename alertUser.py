@@ -38,7 +38,7 @@ class Alerts:
     def alertGeneral(self):
         # Obtener todos los números
         numeros = [doc.get("numero_id", "No encontrado") for doc in self.collection.find()]
-
+        print("entrrara?")
         for doc in self.collection.find():
             numero_id = doc.get("numero_id", "Sin número")
             mensajes = doc.get("mensajes", [])[-8:]

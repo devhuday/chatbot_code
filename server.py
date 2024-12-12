@@ -69,5 +69,5 @@ def iniciar_scheduler():
 
  
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler()
+    iniciar_scheduler()
     app.run()
