@@ -43,14 +43,17 @@ class Alerts:
             numero_id = doc.get("numero_id", "Sin número")
             mensajes = doc.get("mensajes", [])[-8:]
             time = mensajes[-1]["timestamp"] 
+            print(numero_id)
+            print(time)
             if not any("Solicitud enviada ✅" in mensaje.get("mensaje", "") for mensaje in mensajes):
                 if time:
-                    time = self.procesar_time(time)
-                if time:
-                    current_time = datetime.datetime.now(datetime.timezone.utc)
-                    delta_24_hours = datetime.timedelta(minutes=1)
+                    timestamp = datetime.strptime(time, "%Y-%m-%d %H:%M:%S.%f") 
+                    # Calcular la diferencia de tiempo 
+                    delta = timedelta(minutes=3) 
+                    hora_esperada = timestamp + delta
+                    timeNow = datetime.datetime.now(datetime.timezone.utc)
 
-                if (current_time - time) > delta_24_hours:
+                if timeNow > hora_esperada:
                     self.message(numero_id)
 
     def check_and_process_recordatory(self):
