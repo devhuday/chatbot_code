@@ -84,7 +84,7 @@ def enviar_respuesta(number, text, messageId, response_data, conver, name):
         lista_respuestas.append(contact_Message(number, sett.contact[name_id], sett.contact[number_id]))
         
     if "alerta" in response_data:
-        conver.new_alarm(number,name)
+        conver.new_alarm(name,number)
         
         
 

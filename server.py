@@ -62,9 +62,9 @@ def alerta24hours():
 def iniciar_scheduler():
     scheduler = BackgroundScheduler()
     # alerta cada 1 minuto
-    scheduler.add_job(alerta3min, "interval", minutes=2)
+    scheduler.add_job(alerta3min, "interval", minutes=1)
     # alerta cada 48 horas
-    scheduler.add_job(alerta24hours, "interval", minutes=1)
+    scheduler.add_job(alerta24hours, "interval", minutes=10)
     scheduler.start()
 
  
