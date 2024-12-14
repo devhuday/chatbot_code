@@ -47,8 +47,9 @@ def recibir_mensajes():
         print(type)
         text = services.obtener_Mensaje_whatsapp(message)
         services.enviar_Mensaje_whatsapp(services.markRead_Message(messageId))
-        messageQueue = queue.verify_queue()
+        messageQueue = queue.load_collect()
         if messageQueue:
+            print("espera")
             services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento"))
         queue.load_message(messageQueue,name,number,messageId,text)
         return 'enviado'
