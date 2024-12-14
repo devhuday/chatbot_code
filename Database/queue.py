@@ -15,6 +15,7 @@ def load_collect():
         return collectUsersMessage
 
 def load_message(queue,name,number,messageid,text):
+        queue = load_collect()
         user = {
             "usuario_id": name, 
             "numero_id": number,
@@ -26,7 +27,7 @@ def load_message(queue,name,number,messageid,text):
         return newuser
 
 def send_message(queue):
-        queueb = load_collect()
+        queue = load_collect()
         for doc in queue.find():
                 name=doc.get("usuario_id", None)
                 number=doc.get("numero_id", None)

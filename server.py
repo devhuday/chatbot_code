@@ -50,7 +50,6 @@ def recibir_mensajes():
         messageQueue = queue.verify_queue()
         if messageQueue:
             services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento"))
-            pass
         queue.load_message(messageQueue,name,number,messageId,text)
         return 'enviado'
     except Exception as e:
