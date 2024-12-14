@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta, timezone
-import Credentials.credential as credential
 import Database.history as history
 from Credentials.credential import *
 from pymongo import MongoClient
@@ -11,7 +10,6 @@ def load_collect():
         client = MongoClient(f"mongodb+srv://{user}:{password}@{cluster}.amtem.mongodb.net/{dbname}?retryWrites=true&w=majority")
         db = client[dbname]
         collectUsersMessage = db[collectqueue]
-
         return collectUsersMessage
 
 def load_message(queue,name,number,messageid,text):
