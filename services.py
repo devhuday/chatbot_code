@@ -24,12 +24,13 @@ def obtener_Mensaje_whatsapp(message):
     return text
 
 def enviar_Mensaje_whatsapp(data):
+    print("se encuiara")
     try:
         whatsapp_token = sett.whatsapp_token
         whatsapp_url = sett.whatsapp_url
         headers = {'Content-Type': 'application/json',
                    'Authorization': 'Bearer ' + whatsapp_token}
-        #print("se envia ", data)
+        print("se envia ", data)
         response = requests.post(whatsapp_url, 
                                  headers=headers, 
                                  data=data)
@@ -39,6 +40,7 @@ def enviar_Mensaje_whatsapp(data):
         else:
             return 'error al enviar mensaje', response.status_code
     except Exception as e:
+        print("No se envia")
         return e,403
     
 def text_Message(number,text):
@@ -51,6 +53,22 @@ def text_Message(number,text):
                 "text": {
                     "body": text
                 }
+            }
+    )
+    return data
+  
+def enviarplantilla(number):
+    data = json.dumps(
+            {
+              "messaging_product": "whatsapp",
+              "to": "573058031242",
+              "type": "template",
+              "template": {
+                "name": "testing_plantilla",
+                "language": {
+                    "code": "en_US"
+                }
+              }
             }
     )
     return data

@@ -59,14 +59,18 @@ def alerta24hours():
     alertaHour = alertUser.Alerts()
     alertaHour.alertGeneral()
     
-def iniciar_scheduler():
+def iniciar_scheduler(): 
     scheduler = BackgroundScheduler()
     # alerta cada 1 minuto
     scheduler.add_job(alerta3min, "interval", minutes=1)
     # alerta cada 48 horas
     scheduler.add_job(alerta24hours, "interval", minutes=10)
     scheduler.start()
-
+    
+def test():
+  print("enviarplantilla")
+  plantilla=services.enviarplantilla("573058031242")
+  services.enviar_Mensaje_whatsapp(plantilla)
  
 if __name__ == '__main__':
     iniciar_scheduler()
