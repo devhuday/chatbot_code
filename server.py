@@ -1,9 +1,11 @@
 from flask import Flask, request
-import sett 
-import services
-import flow
+import ChatFlow.sett as sett 
+import ChatFlow.services as services
+import MessageTools.flow as flow
 from apscheduler.schedulers.background import BackgroundScheduler
-import alertUser
+import Alerts.timeAlert as alert
+import Database.queue as queue
+
 app = Flask(__name__)
 
 @app.route('/bienvenido', methods=['GET'])
@@ -14,7 +16,6 @@ def  bienvenido():
 def testing():
   print("Solicitud de UptimeRobot detectada.")
   return "recibida", 200
-  
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
@@ -42,30 +43,18 @@ def recibir_mensajes():
         messageId = message['id']
         contacts = value['contacts'][0]
         name = contacts['profile']['name']
-        #type = message['type']
+        type = message['type']
         print(type)
         text = services.obtener_Mensaje_whatsapp(message)
-        flow.administrar_chatbot(text, number,messageId,name)
+        services.enviar_Mensaje_whatsapp(services.markRead_Message(messageId))
+        messageQueue = queue.verify_queue()
+        if messageQueue:
+            services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento"))
+            pass
+        queue.load_message(messageQueue,name,number,messageId,text)
         return 'enviado'
-
     except Exception as e:
         return 'no enviado ' + str(e)
-
-def alerta3min():
-    alertaMin = alertUser.Alerts()
-    alertaMin.check_and_process_recordatory()
-
-def alerta24hours():
-    alertaHour = alertUser.Alerts()
-    alertaHour.alertGeneral()
-    
-def iniciar_scheduler(): 
-    scheduler = BackgroundScheduler()
-    # alerta cada 1 minuto
-    scheduler.add_job(alerta3min, "interval", minutes=1)
-    # alerta cada 48 horas
-    scheduler.add_job(alerta24hours, "interval", minutes=10)
-    scheduler.start()
     
 def test():
   print("enviarplantilla")
@@ -73,5 +62,5 @@ def test():
   services.enviar_Mensaje_whatsapp(plantilla)
  
 if __name__ == '__main__':
-    iniciar_scheduler()
+    alert.iniciar_timers()
     app.run()

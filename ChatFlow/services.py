@@ -1,8 +1,8 @@
 import requests
-import sett
+import ChatFlow.sett as sett
 import json
 import time
-import textbot as bot
+import ChatFlow.textbot as bot
 def obtener_Mensaje_whatsapp(message):
     if 'type' not in message :
         text = 'mensaje no reconocido'

@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import datetime
-import credential
+import Credentials.credential as credential
 
 class Conversacion:
     def __init__(self, number, messageId, username):

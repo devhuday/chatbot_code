@@ -14,3 +14,4 @@ datetime
 pymongo
 unidecode
 apscheduler
+python-dotenv

@@ -1,12 +1,12 @@
 
-from services import *
-import textbot as bot
-import sett
-import database
-import ia
-import sendemail 
-import history
-import eraser
+from ChatFlow.services import *
+import ChatFlow.textbot as bot
+import ChatFlow.sett as sett
+import Database.database as database
+import MessageTools.ia as ia
+import Email.sendemail as sendemail 
+import Database.history as history
+import MessageTools.eraser as eraser
 from unidecode import unidecode
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime, timedelta
@@ -243,7 +243,6 @@ def administrar_chatbot(text, number, messageId, name):
     elif "mantenimiento " == text and conver.check_user_info(): 
         text = "citaManteni"
     
-    enviar_Mensaje_whatsapp(markRead_Message(messageId))
     time.sleep(1)
     print("xdd")
     lista_respuestas = recorrer(RESPONSES, number, text, messageId, conver, name)

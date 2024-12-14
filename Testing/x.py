@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from credential import *
+from Credentials.credential import *
 # Conexión con MongoDB
 client = MongoClient(f"mongodb+srv://{user}:{password}@{cluster}.amtem.mongodb.net/{dbname}?retryWrites=true&w=majority")
 db = client[dbname]
