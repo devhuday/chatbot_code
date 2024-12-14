@@ -47,6 +47,7 @@ def recibir_mensajes():
         print(type)
         text = services.obtener_Mensaje_whatsapp(message)
         services.enviar_Mensaje_whatsapp(services.markRead_Message(messageId))
+        
         messageQueue = queue.load_collect()
         if messageQueue:
             print("espera")
