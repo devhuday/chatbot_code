@@ -1,7 +1,10 @@
 token = 'greengloInvita'
 
-whatsapp_token = 'EAATzTeLmik0BOwhuMlCccF7o8TDTE1q0vsa0BLRK5hBz6Cftef40297OMtxu4OCtSh6fq5JqtltwuntHvbxnwZA42NCChmVGg4ObjoXeZAIBUc6F1Puspl7V7ZBJiW7vjoB7IEOYkRNzPZCSZCvE6AMhXBZCsx76P49Fqc5kIBlYDaWl8Pe6f3tsJt2vQH272wzwZDZD'
-whatsapp_url = 'https://graph.facebook.com/v21.0/511017298752321/messages'
+#whatsapp_token = 'EAATzTeLmik0BOwhuMlCccF7o8TDTE1q0vsa0BLRK5hBz6Cftef40297OMtxu4OCtSh6fq5JqtltwuntHvbxnwZA42NCChmVGg4ObjoXeZAIBUc6F1Puspl7V7ZBJiW7vjoB7IEOYkRNzPZCSZCvE6AMhXBZCsx76P49Fqc5kIBlYDaWl8Pe6f3tsJt2vQH272wzwZDZD'
+#whatsapp_url = 'https://graph.facebook.com/v21.0/511017298752321/messages'
+
+whatsapp_token = 'EAAItAZBihWfUBO80B4fvfZCTreIbHAaAGBiFvBOiatkQNE43C4W8BJRKXHkvB5w8cgNiv4ZCGM41sG6HrV7Gg4RsFUUdIcS7yToyeFl9iu0Tvtj4l8ZAGfE7gZB0vTaSJqAFYSZADRQaKHnJxL6TmNl9S30JifnMeZA1MbGaoFVwqVgf5hx5nN1VZA8Vdx23nGtMpYZAnVk7Ef6ePQYWZB'
+whatsapp_url = "https://graph.facebook.com/v21.0/401657476373844/messages"
 
 stickers = {
     "poyo_feliz": 984778742532668,

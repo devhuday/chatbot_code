@@ -1,5 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import Alerts.alertUser as alertUser
+import Alerts.answerUser as answerUser
 
 def alerta3min():
     alertaMin = alertUser.Alerts()
@@ -12,7 +13,7 @@ def alerta24hours():
 def iniciar_timers(): 
     scheduler = BackgroundScheduler()
     # alerta cada  minuto
-    scheduler.add_job(alerta3min, "interval", seconds=5)
+    scheduler.add_job(answerUser.user, "interval", seconds=3)
     # alerta cada 1 minuto
     scheduler.add_job(alerta3min, "interval", minutes=1)
     # alerta cada 48 horas
