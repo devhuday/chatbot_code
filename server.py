@@ -1,7 +1,7 @@
 from flask import Flask, request
 import ChatFlow.sett as sett 
 import ChatFlow.services as services
-import MessageTools.flow as flow
+import ChatFlow.flow as flow
 from apscheduler.schedulers.background import BackgroundScheduler
 import Alerts.timeAlert as alert
 import Database.queue as queue
@@ -45,14 +45,15 @@ def recibir_mensajes():
         name = contacts['profile']['name']
         type = message['type']
         print(type)
+        
         text = services.obtener_Mensaje_whatsapp(message)
         services.enviar_Mensaje_whatsapp(services.markRead_Message(messageId))
-        
-        messageQueue = queue.load_collect()
-        if messageQueue:
-            print("espera")
-            services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento"))
-        queue.load_message(messageQueue,name,number,messageId,text)
+        messagelist = queue.Queue()
+        print(messagelist.verify_queue())
+        if not messagelist.verify_queue() == 0:
+          print("espera")
+          services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento..."))
+        messagelist.load_message(name,number,messageId,text)
         return 'enviado'
     except Exception as e:
         return 'no enviado ' + str(e)
