@@ -1,4 +1,4 @@
-import Database.queue as queue
+import queueUser as queue
 
 def user():
   message = queue.Queue()

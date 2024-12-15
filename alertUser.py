@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta, timezone
-import Database.history as history
-from Credentials.credential import *
+import history as history
+from credential import *
 from pymongo import MongoClient
-from ChatFlow.services import *
+from services import *
 
 class Alerts:
 

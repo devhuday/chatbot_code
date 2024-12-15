@@ -1,10 +1,10 @@
 from flask import Flask, request
-import ChatFlow.sett as sett 
-import ChatFlow.services as services
-import ChatFlow.flow as flow
+import sett as sett 
+import services as services
+import flow as flow
 from apscheduler.schedulers.background import BackgroundScheduler
-import Alerts.timeAlert as alert
-import Database.queue as queue
+import timeAlert as alert
+import queueUser as queue
 
 app = Flask(__name__)
 
