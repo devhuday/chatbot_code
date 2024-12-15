@@ -14,8 +14,8 @@ def  bienvenido():
 
 @app.route("/testing", methods=["POST", "GET"])
 def testing():
-  print("Solicitud de UptimeRobot detectada.")
-  return "recibida", 200
+    print("Solicitud de UptimeRobot detectada.")
+    return "recibida", 200
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
@@ -51,17 +51,17 @@ def recibir_mensajes():
         messagelist = queue.Queue()
         print(messagelist.verify_queue())
         if not messagelist.verify_queue() == 0:
-          print("espera")
-          services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento..."))
+            print("espera")
+            services.enviar_Mensaje_whatsapp(services.text_Message(number,"Espera un momento..."))
         messagelist.load_message(name,number,messageId,text)
         return 'enviado'
     except Exception as e:
         return 'no enviado ' + str(e)
     
 def test():
-  print("enviarplantilla")
-  plantilla=services.enviarplantilla("573058031242")
-  services.enviar_Mensaje_whatsapp(plantilla)
+    print("enviarplantilla")
+    plantilla=services.enviarplantilla("573058031242")
+    services.enviar_Mensaje_whatsapp(plantilla)
  
 if __name__ == '__main__':
     alert.iniciar_timers()
