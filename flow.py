@@ -142,8 +142,8 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
         
         soli_env = "Solicitud enviada ✅\n\n"
         return (
-            buttonReply_Message(number, ["Volver al inicio ✅"], soli_env + tipo_solicitud, FOOTER, "sed1", messageId),
-            soli_env + tipo_solicitud,
+            [buttonReply_Message(number, ["Volver al inicio ✅"], soli_env + tipo_solicitud, FOOTER, "sed1", messageId)],
+            soli_env+tipo_solicitud,
         )
     
     def registroUsuario(hist):
