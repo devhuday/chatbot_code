@@ -27,14 +27,14 @@ RESPONSES = {
     "citaManteni": {"body": bot.mantenimientoMens["message"]},
   
     #3 pagina
-    "on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
-    "off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
+    "sistema on grid": {"question": bot.cotizacion_grid["message"], "options": bot.cotizacion_grid["option"]},
+    "sistema off grid": {"question": bot.cotizacion_offgrid["message"], "options": bot.cotizacion_offgrid["option"]},
     "sistema hibrido": {"body": bot.cotizacion_hibrido["message"], "question": bot.cotizacion_hibrido["question"], "options":bot.cotizacion_hibrido["option"], "media": ("consumo", "image")},
     
     #4 pagina on-grid
-    "residencial": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
-    "comercial": {"body": bot.Residencial_coti_comercial["message"], "question": bot.Residencial_coti_comercial["question"], "options": bot.Residencial_coti_comercial["option"], "media": ("consumo", "image")},
-    "industrial": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
+    "residencial ": {"body": bot.Residencial_cotizar["message"], "question": bot.Residencial_cotizar["question"], "options": bot.Residencial_cotizar["option"], "media": ("consumo", "image")},
+    "comercial ": {"body": bot.Residencial_coti_comercial["message"], "question": bot.Residencial_coti_comercial["question"], "options": bot.Residencial_coti_comercial["option"], "media": ("consumo", "image")},
+    "industrial ": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     
     #4 pagina off-grid
     "sistemas aislados":{"body": bot.offgrid_pdf["message"], "media": ("catalogo", "documents"), "question":endflow, "options": endflowOption, "alerta": "on"},
@@ -47,6 +47,10 @@ RESPONSES = {
     "Ok, gracias": {"body": bot.Residencial_coti_mayor["message"], "contact": ("name", "number")},
     "agendar cita": {"body": bot.agendar["message"], "media": ("nic", "image")},
     "panelc": {"body": bot.panel["message"]}
+}
+
+RESPONSE_FLEX = {
+      "ahorro hasta": {"body": bot.Residencial_coti_pdf["message"], "media": ("cotizacion_", "documents"), "question":endflow, "options": endflowOption, "alerta": "on", "credito":"on"}
 }
 
 RESPONSE_IA = {
@@ -115,10 +119,15 @@ def procesar_ia(number, text, response_data, messageId):
         return buttonReply_Message(number, ["Cotizar"], f"{respuesta_ia}\n\n*Puedes seguir tu cotización presionando el botón*", FOOTER, "sed2", messageId)
     return text_Message(number, respuesta_ia)
 
+def recorrerFlex(responses_dict, number, text, messageId, conver, name):
+    for keyword, response_data in responses_dict.items():
+        if keyword in text:
+            return enviar_respuesta(number, text, messageId, response_data, conver, name)
+    return None
 
 def recorrer(responses_dict, number, text, messageId, conver, name):
     for keyword, response_data in responses_dict.items():
-        if keyword in text:
+        if keyword == text:
             return enviar_respuesta(number, text, messageId, response_data, conver, name)
     return None
 
@@ -176,7 +185,7 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
             respuesta_ia[:-12],
         ),
         "cotigreenglo": lambda: (
-            [buttonReply_Message(number, ["Cotizar"], f"{respuesta_ia[:-12]}{botoninf}", FOOTER, "sed1", messageId)],
+            [buttonReply_Message(number, ["Cotizar"], f"{respuesta_ia[:-14]}{botoninf}", FOOTER, "sed1", messageId)],
             respuesta_ia
         ),
         "greenInforma": lambda: (
@@ -227,7 +236,6 @@ def procesar_respuesta_general(text, number, messageId, name, conver):
 def administrar_chatbot(text, number, messageId, name):
     if text in ["Iniciar ✅", "Volver al inicio ✅"]: 
         text = "Holax"
-    print("xd")
     text = unidecode(text.lower())
     conver = database.Conversacion(number, messageId, name)
     
@@ -244,14 +252,17 @@ def administrar_chatbot(text, number, messageId, name):
         text = "citaManteni"
     
     time.sleep(1)
-    print("xdd")
     lista_respuestas = recorrer(RESPONSES, number, text, messageId, conver, name)
     if "mensaje no procesado" not in text:
       if lista_respuestas:
         for respuesta in lista_respuestas:
             enviar_Mensaje_whatsapp(respuesta)
-            time.sleep(1)
       else:
-          IAresponse(text, number, messageId, name, conver)
+          lista_respuestas = recorrerFlex(RESPONSE_FLEX, number, text, messageId, conver, name)
+          if lista_respuestas:
+            for respuesta in lista_respuestas:
+              enviar_Mensaje_whatsapp(respuesta)
+          else:
+            IAresponse(text, number, messageId, name, conver)
     else:
       enviar_Mensaje_whatsapp(buttonReply_Message(number, bot.welcome["option"], bot.Notype["message"], FOOTER, "sed1", messageId))
