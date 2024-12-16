@@ -1,12 +1,12 @@
 
-from ChatFlow.services import *
-import ChatFlow.textbot as bot
-import ChatFlow.sett as sett
-import Database.database as database
-import MessageTools.ia as ia
-import Email.sendemail as sendemail 
-import Database.history as history
-import MessageTools.eraser as eraser
+from services import *
+import textbot as bot
+import sett as sett
+import database as database
+import ia as ia
+import sendemail as sendemail 
+import history as history
+import eraser as eraser
 from unidecode import unidecode
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime, timedelta
@@ -142,8 +142,8 @@ def verificar_ia(text, respuesta_ia, number, name, messageId, conver):
         
         soli_env = "Solicitud enviada ✅\n\n"
         return (
-            buttonReply_Message(number, ["Volver al inicio ✅"], soli_env + tipo_solicitud, FOOTER, "sed1", messageId),
-            soli_env + tipo_solicitud,
+            [buttonReply_Message(number, ["Volver al inicio ✅"], soli_env + tipo_solicitud, FOOTER, "sed1", messageId)],
+            soli_env+tipo_solicitud,
         )
     
     def registroUsuario(hist):

@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from Credentials.credential import *
+from credential import *
 
 def historialwrite(nameuser,step):
     # Conexión a la base de datos

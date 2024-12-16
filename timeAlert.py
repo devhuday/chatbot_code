@@ -1,6 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-import Alerts.alertUser as alertUser
-import Alerts.answerUser as answerUser
+import alertUser as alertUser
+import answerUser as answerUser
 
 def alerta3min():
     alertaMin = alertUser.Alerts()

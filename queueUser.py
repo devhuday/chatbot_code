@@ -1,10 +1,10 @@
-import Database.history as history
+import history as history
 import datetime
 from pymongo import MongoClient
-from ChatFlow.services import *
-import Database.database as database
-import ChatFlow.flow as flow
-from Credentials.credential import *
+from services import *
+import database as database
+import flow as flow
+from credential import *
 
 class Queue:
 	def __init__(self):
